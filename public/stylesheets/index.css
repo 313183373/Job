@@ -1,0 +1,80 @@
+* {
+  font-family: "Microsoft YaHei";
+}
+
+.navbar-default {
+  padding: 16px 200px;
+  background-color: #FFFFFF;
+  border-bottom: 1px #6AD36A solid;
+  font-size: 15px;
+}
+
+.container-fluid {
+  background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+  color: #35B935;
+  background-color: #F3F6F3;
+  border-radius: 5px;
+}
+
+.navbar-brand {
+  padding: 0 20px;
+}
+
+.navbar-brand img {
+  width: 200px;
+  margin-top: 8px;
+}
+
+#navbar-search {
+  width: 400px;
+}
+
+#navbar-search:focus {
+  border-color:#6AD36A;
+  box-shadow: inset 0 1px 1px #DFE3DF, 0 0 5px #C1E2C1;
+}
+
+.btn-default:hover, 
+.btn-default:focus,
+.btn-default:active {
+  border-color: #6AD36A;
+  background-color: #FFFFFF;
+  outline: none;
+}
+
+.btn-default.active.focus, 
+.btn-default.active:focus, 
+.btn-default.active:hover, 
+.btn-default:active.focus, 
+.btn-default:active:focus, 
+.btn-default:active:hover, 
+.open>.dropdown-toggle.btn-default.focus, 
+.open>.dropdown-toggle.btn-default:focus, 
+.open>.dropdown-toggle.btn-default:hover {
+  border-color: #6AD36A;
+  background-color: #F3F6F3;
+  outline: none;
+}
+
+#content {
+  width: 100%;
+  height: 620px;
+  padding: 0 10%;
+}
+
+#footer {
+  width: 100%;
+  height: 60px;
+  background-color: #FFFFFF;
+  text-align: center;
+  color: #999999;
+  border-top: 1px #6AD36A solid;
+  padding-top: 10px;
+}
