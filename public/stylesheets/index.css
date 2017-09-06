@@ -3,7 +3,6 @@
 }
 
 .navbar-default {
-  padding: 16px 200px;
   background-color: #FFFFFF;
   border-bottom: 1px #6AD36A solid;
   font-size: 15px;
@@ -29,11 +28,11 @@
 
 .navbar-brand img {
   width: 200px;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 #navbar-search {
-  width: 400px;
+  width: 300px;
 }
 
 #navbar-search:focus {
