@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    link(rel='stylesheet',href='/stylesheets/signin.css')
+    .signin_form
+        form#login_form(action='#', method='post')
+            .form-group
+                h1.denglu 登陆
+            .form-group
+                label(for='inputEmail1') 邮箱
+                input#inputEmail1.form-control(type='email', placeholder='Email')
+            .form-group
+                label(for='inputPassword1') 密码
+                input#inputPassword1.form-control(type='password', placeholder='Password')
+            .form-group
+                    .checkbox
+                        label
+                            input(type='checkbox' style='width:70px')
+                            |  记住我
+
+                        a.forgetcode(href='/forget_password') 忘记密码？
+            .form-group
+                .col-sm-offset-2.col-sm-10.bottomb
+                    button.btn.btn-primary.btn-lg(type='submit') 登陆
+                    a.btn.btn-default.btn-lg(href='/signup', role='button') 注册
+    .right
+        .right-head
+            h3 欢迎加入码妞俱乐部招聘平台
+            p 该平台是专门为该项公益活动的参与者架构的一个招聘平台。

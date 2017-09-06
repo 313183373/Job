@@ -1,0 +1,39 @@
+
+.signin_form form{
+    width:30%;
+    border-right: 1px dashed gray;
+}
+
+#login_form{
+    margin-left:18%;
+    float:left;
+}
+
+#login_form .inputemail{
+    margin-bottom: 10px;
+}
+
+#login_form input{
+    width:70%
+}
+
+.right{
+    float:left;
+    margin-left:20px;
+}
+
+.bottomb{
+    margin-left:-15px;
+}
+.bottomb button{
+    margin-right:20px;
+}
+
+
+.forgetcode{
+    margin-left: 10px;
+}
+
+#footer{
+    clear:left;
+}

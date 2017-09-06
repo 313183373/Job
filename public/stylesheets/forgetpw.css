@@ -1,0 +1,41 @@
+
+.forget_form form{
+    width:30%;
+    border-right: 1px dashed gray;
+}
+
+#forget_form{
+    margin-left:18%;
+    float:left;
+}
+
+#forget_form #forgetEmail1{
+    display: inline-block;
+    width:55%;
+}
+.confirmbutton{
+    margin-left: 10px;
+}
+
+
+
+#forget_form input{
+    width:70%
+}
+
+.right{
+    float:left;
+    margin-left:20px;
+}
+
+.bottomb{
+    margin-left:-15px;
+}
+.bottomb button{
+    margin-right:20px;
+}
+
+
+#footer{
+    clear:left;
+}

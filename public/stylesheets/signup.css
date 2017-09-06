@@ -1,0 +1,41 @@
+
+.signup_form form{
+    width:30%;
+    border-right: 1px dashed gray;
+}
+
+#signup_form{
+    margin-left:18%;
+    float:left;
+}
+
+#signup_form #signupEmail1{
+    display: inline-block;
+    width:55%;
+}
+.confirmbutton{
+    margin-left: 10px;
+}
+
+
+
+#signup_form input{
+    width:70%
+}
+
+.right{
+    float:left;
+    margin-left:20px;
+}
+
+.bottomb{
+    margin-left:-15px;
+}
+.bottomb button{
+    margin-right:20px;
+}
+
+
+#footer{
+    clear:left;
+}
