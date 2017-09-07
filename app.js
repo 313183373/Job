@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var signin = require('./routes/signin');
 var signup=require('./routes/signup');
 var forgetpw=require('./routes/forgetpw');
+var postJob = require('./routes/postJob');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/users', users);
 app.use('/signin', signin);
 app.use('/signup',signup);
 app.use('/forget_password',forgetpw);
+app.use('/post_job',postJob);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
