@@ -1,0 +1,47 @@
+.line{
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+select{
+    margin-top: 15px;
+    height: 34px;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+p{
+    font-size: 20px;
+    margin-top: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+#postJobDescription {
+    height: 400px;
+}
+a,small{
+    margin: 5px;
+    padding: 6px 12px;
+    font-size: 15px;
+}
+#postJobApply{
+    height: 200px;
+}
+#datetimepickerInput,#datetimepickerI,#datetimepickerSpan{
+    height: 30px;
+    padding: 6px 5px;
+    border-radius: 5px;
+}
+#datetimepicker{
+    padding-bottom: 10px;
+}
+button{
+    border-radius: 4px;
+    color: #35B935;
+    margin: 15px;
+    font-size: 24px;
+}
+.need{
+    color: #ff2217;
+}
