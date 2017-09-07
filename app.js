@@ -9,9 +9,10 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var signin = require('./routes/signin');
-var signup=require('./routes/signup');
-var forgetpw=require('./routes/forgetpw');
+var signup = require('./routes/signup');
+var forgetpw = require('./routes/forgetpw');
 var postJob = require('./routes/postJob');
+var personalInfo = require('./routes/personalInfo');
 
 var app = express();
 

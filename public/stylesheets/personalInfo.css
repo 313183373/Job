@@ -1,0 +1,50 @@
+.split {
+    width: 3%; 
+    display: inline-block;
+}
+
+#my-infomation {
+    height: 620px;
+}
+
+#my-infomation .panel-default {
+    height: 620px;
+    margin: 2%;
+}
+
+#my-infomation .panel-heading {
+    height: 56px;
+}
+
+#my-infomation .panel-title {
+    height: 32px;
+    font-size: 30px;
+}
+
+#my-infomation .list-group li {
+    border-left: none;
+    border-right: none;
+    height: 60px;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+#my-infomation .panel-body div {
+    width: 180px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 40px;
+    margin-left: 28%;
+}
+
+#my-posts-content .panel-heading {
+    height: 40px;
+}
+
+#my-posts .panel-heading h3 {
+    float: left;
+}
+
+#my-posts .condition {
+    float: right;
+}
