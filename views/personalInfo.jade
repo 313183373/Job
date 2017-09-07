@@ -1,0 +1,92 @@
+extends layout
+
+block content
+    link(rel='stylesheet',href='/stylesheets/personalInfo.css')
+    .container
+      .row
+        // 左侧：个人信息及修改
+        #my-infomation.col-md-5
+          .panel.panel-default
+            .panel-heading
+              h2.panel-title.text-center
+                span.glyphicon.glyphicon-user
+                span.split
+                | 用户信息
+            .panel-body
+              ul.list-group
+                li.list-group-item
+                  span.glyphicon.glyphicon-envelope
+                  span.split
+                  | 邮箱
+                li.list-group-item
+                  span.glyphicon.glyphicon-lock
+                  span.split
+                  | 密码
+                li.list-group-item
+                  span.glyphicon.glyphicon-info-sign
+                  span.split
+                  | 公司名称
+                li.list-group-item
+                  span.glyphicon.glyphicon-map-marker
+                  span.split
+                  | 公司地址
+                li.list-group-item
+                  span.glyphicon.glyphicon-tag
+                  span.split
+                  | 公司所属行业
+                // 点击更改按钮后会多出“密码确认”、“现在的密码”两项
+              div(style='height: 50px')
+              .btn.btn-default.text-center(style='margin-bottom: 15px') 修改信息
+              br
+              .btn.btn-default.text-center 注销账户
+        // 右侧：已发布工作
+        #my-posts.col-md-6.col-md-offset-1
+          #my-posts-banner.page-header
+            h2
+              span.glyphicon.glyphicon-list
+              span.split
+              | 已发布工作
+          #my-posts-content
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title 工作A
+                .condition 成功发布
+              .panel-body
+                | 工作职位A
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title 工作B
+                .condition 成功发布
+              .panel-body
+                | 工作职位B
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title 工作C
+                .condition 未发布
+              .panel-body
+                | 工作职位C
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title 工作D
+                .condition 未发布
+              .panel-body
+                | 工作职位D
+          // 翻页组件
+          nav.text-center(aria-label='Page navigation')
+            ul.pagination
+              li
+                a(href='#', aria-label='Previous')
+                  span(aria-hidden='true') «
+              li
+                a(href='#') 1
+              li
+                a(href='#') 2
+              li
+                a(href='#') 3
+              li
+                a(href='#') 4
+              li
+                a(href='#') 5
+              li
+                a(href='#', aria-label='Next')
+                  span(aria-hidden='true') »
