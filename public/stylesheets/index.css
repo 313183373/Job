@@ -77,3 +77,15 @@
   /*border-top: 1px #6AD36A solid;*/
   padding-top: 10px;
 }
+
+.bod{
+  border-bottom: 1px dotted #ccc;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.title{
+  height: 30px;
+  font-size:15px;
+}

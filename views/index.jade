@@ -1,5 +1,55 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    // 工作职位栏
+    .container.bod
+        dl
+            dt.title 工作职位
+            dd
+                a.text-success.col-md-2(name='all', value='#', href='javascript:;') All Jobs
+                a.text-success.col-md-2(name='Development', value='#', href='javascript:;') Development
+                a.text-success.col-md-2(name='Education', value='#', href='javascript:;') Education
+                a.text-success.col-md-2(name='Marketing', value='#', href='javascript:;') Marketing
+                a.text-success.col-md-2(name='ProductManagement', value='#', href='javascript:;')
+                    | Product
+                    | Management
+                a.text-success.col-md-2(name='AccountManagement', value='#', href='javascript:;')
+                    | Account
+                    | Management
+                a.text-success.col-md-2(name='BusinessDevelopment', value='#', href='javascript:;')
+                    | Business
+                    | Development
+                a.text-success.col-md-2(name='Client', value='#', href='javascript:;') Client Services
+                a.text-success.col-md-2(name='Communication', value='#', href='javascript:;') Communications
+                a.text-success.col-md-2(name='CustomerService', value='#', href='javascript:;') Customer Service
+                a.text-success.col-md-2(name='Design', value='#', href='javascript:;') Design
+    // 工作性质栏
+    .container.bod
+        dl
+            dt.title 工作性质
+            dd
+                a.text-success.col-md-2(name='Volunteer', value='600230', href='javascript:;') Volunteer
+                a.text-success.col-md-2(name='Permanent', value='600230', href='javascript:;') Permanent
+                a.text-success.col-md-2(name='Freelance', value='600230', href='javascript:;') Freelance
+                a.text-success.col-md-2(name='Contract', value='600230', href='javascript:;') Contract
+    // 招聘信息
+    .container
+        table.table.table-hover
+            // 表头
+            tr(style='background-color:#dddddd;')
+                th.col-md-3.title 工作职位
+                th.col-md-3.title 工作城市
+                th.col-md-3.title 工作性质
+                th.col-md-3.title 公司名称
+            // 内容
+            tr#t_1(onclick="window.document.location = '#'")
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作职位
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作城市
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作性质
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 公司名称
+            tr#t_2(onclick="window.document.location = '#'")
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作职位
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作城市
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作性质
+                td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 公司名称
+    // 版权
