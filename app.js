@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 // require 路由文件，可以看routes里面的文件怎么写的，也很简单
 var index = require('./routes/index');
 var users = require('./routes/users');
