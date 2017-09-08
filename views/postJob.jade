@@ -1,0 +1,106 @@
+extends layout
+
+block content
+    // 时间选择器支持包
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datepicker3.css')
+    //自定义
+    link(rel='stylesheet', type='text/css', href='/stylesheets/postJob.css')
+    script(src='/JavaScript/postJob.js', type='text/javascript')
+    // 城市选择器支持包
+    script(src='/JavaScript/Area.js', type='text/javascript')
+    script(src='/JavaScript/AreaData_min.js', type='text/javascript')
+    script(type='text/javascript').
+        $(function (){
+            initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '44', '0', '0');
+        });
+    .postAll.container
+        .postTitle
+            p.line
+                b.need *
+                | 招聘标题
+            input#postJobTitle.line
+        .postCompany
+            p.line
+                b.need *
+                | 招聘公司
+            input#postJobCompany.line
+        .postDescription
+            p.line
+                b.need *
+                | 职位描述（支持Markdown）
+                small
+                    a(href='http://www.appinn.com/markdown/') Markdown语法说明请点击此处
+            textarea#postJobDescription.line
+        .howToApply
+            p.line
+                b.need *
+                | 申请方式（支持Markdown）
+            textarea#postJobApply.line
+        .expiryDate
+            p.line
+                b.need *
+                | 截止日期
+            .input-group.date.datepicker
+                input.form-control(type='text')
+                .input-group-addon
+                    span.glyphicon.glyphicon-th
+        .postCategory
+            p.line
+                b.need *
+                | 工作类型
+            select#postJobCategory
+                option(value='')
+                option(value='32') 研发
+                option(value='33') 教育
+                option(value='35') 市场营销
+                option(value='36') 产品经理
+                option(value='26') 客户经理
+                option(value='27') 业务发展(BD)
+                option(value='28') 售前服务
+                option(value='29') 通信
+                option(value='30') 售后服务
+                option(value='31') 设计
+        .postType
+            p.line
+                b.need *
+                | 工作性质
+            select#postJobType
+                option(value='')
+                option(value='17') 志愿
+                option(value='14') 全职
+                option(value='15') 兼职
+                option(value='16') 合同
+        .postTages
+            p.line  标签
+            input#postJobTages.line
+        .postCity
+            p.line
+                b.need *
+                | 工作地
+            .chooseFrame
+                input.radio(name='chooseCity', type='radio', onclick='chooseCountry()')
+                span 海外：(地区+国家)
+            // 国家选择
+            #overseas
+            // 国内城市选择器
+            .chooseFrame
+                input.radio(name='chooseCity', type='radio', onclick='chooseChineseProv()')
+                span 国内
+            #china
+        div
+            button#createIfo 创建招聘信息
+            small
+                | 带
+                b.need  *
+                | 的为必填项
+    // 时间选择器
+    script(type='text/javascript', src='/JavaScript/bootstrap-datepicker.min.js')
+    script(type='text/javascript', src='/JavaScript/bootstrap-datepicker.zh-CN.min.js', charset='UTF-8')
+    script(type='text/javascript').
+        $(function () {
+            $('.datepicker').datepicker({
+                language: 'zh-CN'
+            });
+        })
+

@@ -9,8 +9,10 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var signin = require('./routes/signin');
-var signup=require('./routes/signup');
-var forgetpw=require('./routes/forgetpw');
+var signup = require('./routes/signup');
+var forgetpw = require('./routes/forgetpw');
+var postJob = require('./routes/postJob');
+var personalInfo = require('./routes/personalInfo');
 
 var app = express();
 
@@ -32,6 +34,8 @@ app.use('/users', users);
 app.use('/signin', signin);
 app.use('/signup',signup);
 app.use('/forget_password',forgetpw);
+app.use('/post_job',postJob);
+app.use('/personal_info',personalInfo);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
