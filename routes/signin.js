@@ -23,6 +23,7 @@ router.post('/check',function (req, res, next) {
             res.redirect('/');
         }else{
             console.log('账号或者密码错误!');
+            res.redirect('/sign');
         }
     }).catch(function (e) {
         console.error(e);
