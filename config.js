@@ -2,8 +2,8 @@ let config={
     database:'test',
     username:'www',
     password:'www',
-    host:'localhost',
-    port:3306
+    host:'59b3b67514e68.gz.cdb.myqcloud.com',
+    port:5026
 };
 
 module.exports=config;
