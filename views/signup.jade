@@ -48,6 +48,8 @@ block content
                 $.post('/signup/check',$(form).serialize(),function (result) {
                     if(result==='邮箱已经被注册!'){
                         alert('邮箱已经被注册了!');
+                    }else{
+                        window.location.href='/';
                     }
                 },'text');
             }else{
