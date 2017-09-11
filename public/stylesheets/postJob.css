@@ -1,5 +1,5 @@
 .line{
-    width: 100%;
+    width: 90%;
     height: 34px;
     padding: 6px 12px;
     border-radius: 5px;
@@ -57,4 +57,15 @@ small{
     float: left;
     margin: 15px;
 }
+.postAll.container{
+    margin-left: 100px;
+    width: 40%;
+    float:left;
+    border-right: 1px dashed gray;
+}
+aside{
+    float: right;
+    margin-right: 250px;
+}
+
 
