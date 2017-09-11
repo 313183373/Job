@@ -20,10 +20,8 @@ router.post('/check',function (req, res, next) {
     }).then(function (result) {
         if(result.length>0) {
             console.log('欢迎'+result[0].email);
-            res.redirect('/');
         }else{
-            console.log('账号或者密码错误!');
-            res.redirect('/sign');
+            res.send('账号或密码错误!');
         }
     }).catch(function (e) {
         console.error(e);
