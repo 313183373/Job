@@ -1,10 +1,10 @@
-## users(ÓÃ»§ÐÅÏ¢±í£©
+## user(ç”¨æˆ·ä¿¡æ¯è¡¨ï¼‰
 
-eid           ÓÊÏäÕËºÅ£¨Ö÷¼ü£©
-password      ÃÜÂë£¨²»ÔÊÐíÎª¿Õ,³¤¶È²»³¬¹ý20£©
-cname         ¹«Ë¾Ãû³Æ
-cadd          ¹«Ë¾µØÖ·
-cpro          ¹«Ë¾ËùÊôÐÐÒµ
+eid           é‚®ç®±è´¦å·ï¼ˆä¸»é”®ï¼‰
+password      å¯†ç ï¼ˆä¸å…è®¸ä¸ºç©º,é•¿åº¦ä¸è¶…è¿‡20ï¼‰
+cname         å…¬å¸åç§°
+cadd          å…¬å¸åœ°å€
+cpro          å…¬å¸æ‰€å±žè¡Œä¸š
 
 ---
 
