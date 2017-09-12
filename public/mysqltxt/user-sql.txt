@@ -1,0 +1,23 @@
+## users(用户信息表）
+
+eid           邮箱账号（主键）
+password      密码（不允许为空,长度不超过20）
+cname         公司名称
+cadd          公司地址
+cpro          公司所属行业
+
+---
+
+CREATE TABLE `user` (
+`eid`  varchar(30) NOT NULL ,
+`password`  varchar(20) NOT NULL ,
+`cname`  varchar(255) NULL ,
+`cadd`  varchar(255) NULL ,
+`cpro`  varchar(255) NULL ,
+PRIMARY KEY (`eid`)
+)
+;
+
+---
+
+     
