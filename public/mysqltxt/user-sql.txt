@@ -8,13 +8,12 @@ cpro          公司所属行业
 
 ---
 
-CREATE TABLE `user` (
-`eid`  varchar(30) NOT NULL ,
-`password`  varchar(20) NOT NULL ,
-`cname`  varchar(255) NULL ,
-`cadd`  varchar(255) NULL ,
-`cpro`  varchar(255) NULL ,
-PRIMARY KEY (`eid`)
+CREATE TABLE user (
+eid  varchar(30) PRIMARY KEY ,
+password  varchar(20) NOT NULL ,
+cname  varchar(255) ,
+cadd  varchar(255) ,
+cpro  varchar(255) ,
 )
 ;
 
