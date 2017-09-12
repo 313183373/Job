@@ -1,17 +1,17 @@
-## jods����Ƹ��Ϣ����
+## jod（招聘信息表）
 
-jid           ��Ƹ��Ϣ��ţ�������
-eid           �û������˺ţ������
-title         ��Ƹ���⣨������Ϊ�գ�
-company       ��Ƹ��˾��������Ϊ�գ�
-jobdesc       ְλ������������Ϊ�գ�
-proposal      ���뷽ʽ��������Ϊ�գ�
-deadline      ��ֹ���ڣ�������Ϊ�գ�
-position      ��������/ְλ��������Ϊ�գ�
-nature        �������ʣ�������Ϊ�գ�
-tags          ��ǩ
-workplace     �����أ�������Ϊ�գ�
-publish       �Ƿ񷢲���1λ�ǣ�0λ��
+jid           招聘信息序号（主键）
+eid           用户邮箱账号（外键）
+title         招聘标题（不允许为空）
+company       招聘公司（不允许为空）
+jobdesc       职位描述（不允许为空）
+proposal      申请方式（不允许为空）
+deadline      截止日期（不允许为空）
+position      工作类型/职位（不允许为空）
+nature        工作性质（不允许为空）
+tags          标签
+workplace     工作地（不允许为空）
+publish       是否发布（1位是，0位否）
 
 ---
 
