@@ -1,0 +1,35 @@
+## job（招聘信息表）
+
+jid           招聘信息序号（主键）
+eid           用户邮箱账号（外键）
+title         招聘标题（不允许为空）
+company       招聘公司（不允许为空）
+jobdesc       职位描述（不允许为空）
+proposal      申请方式（不允许为空）
+deadline      截止日期（不允许为空）
+position      工作类型/职位（不允许为空）
+nature        工作性质（不允许为空）
+tags          标签
+workplace     工作地（不允许为空）
+publish       是否发布（1位是，0位否）
+
+---
+
+CREATE TABLE job (
+jid  varchar(5) PRIMARY KEY ,
+eid  varchar(30) ,
+title  varchar(255) NOT NULL ,
+company  varchar(255) NOT NULL ,
+jobdesc  varchar(255) NOT NULL ,
+proposal  varchar(255) NOT NULL ,
+deadline  varchar(255) NOT NULL ,
+position  varchar(255) NOT NULL ,
+nature  varchar(255) NOT NULL ,
+tags  varchar(255) ,
+workplace  varchar(255) NOT NULL ,
+publish  varchar(1) NOT NULL ,
+FOREIGN KEY (eid) REFERENCES user (eid)
+)
+;
+
+---
