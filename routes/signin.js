@@ -20,6 +20,7 @@ router.post('/check',function (req, res, next) {
     }).then(function (result) {
         if(result.length>0) {
             console.log('欢迎'+result[0].email);
+            res.send('欢迎');
         }else{
             res.send('账号或密码错误!');
         }
