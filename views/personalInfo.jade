@@ -1,6 +1,32 @@
 extends layout
 
 block content
+    script(type='text/javascript').
+        if(!sessionStorage.login||sessionStorage.login==='false'){
+            alert('请先登录!');
+            window.location.href='/';
+        }
+        $(function () {
+            let email=sessionStorage.useremail;
+            let password;
+            let cname;
+            let cadd;
+            let cpro;
+            $.post('/personal_info/get_info',{email},function (result) {
+                result=JSON.parse(result);
+                console.log(result);
+                console.log(result.password,result.cname);
+                password=result.password;
+                cname=result.cname;
+                cadd=result.cadd;
+                cpro=result.cpro;
+                $('#eid').append(email);
+                $('#pw').append(password);
+                $('#cname').append(cname);
+                $('#cadd').append(cadd);
+                $('#cpro').append(cpro);
+            });
+        })
     link(rel='stylesheet',href='/stylesheets/personalInfo.css')
     .container
       .row
@@ -14,23 +40,23 @@ block content
                 | 用户信息
             .panel-body
               ul.list-group
-                li.list-group-item
+                li.list-group-item#eid
                   span.glyphicon.glyphicon-envelope
                   span.split
                   | 邮箱
-                li.list-group-item
+                li.list-group-item#pw
                   span.glyphicon.glyphicon-lock
                   span.split
                   | 密码
-                li.list-group-item
+                li.list-group-item#cname
                   span.glyphicon.glyphicon-info-sign
                   span.split
                   | 公司名称
-                li.list-group-item
+                li.list-group-item#cadd
                   span.glyphicon.glyphicon-map-marker
                   span.split
                   | 公司地址
-                li.list-group-item
+                li.list-group-item#apro
                   span.glyphicon.glyphicon-tag
                   span.split
                   | 公司所属行业

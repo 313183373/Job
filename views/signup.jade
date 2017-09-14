@@ -49,6 +49,8 @@ block content
                     if(result==='邮箱已经被注册!'){
                         alert('邮箱已经被注册了!');
                     }else{
+                        sessionStorage.login=true;
+                        sessionStorage.useremail=result;
                         window.location.href='/';
                     }
                 },'text');

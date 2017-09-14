@@ -13,14 +13,40 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
     }
 });
 
-const User = sequelize.define('user', {
-    email: {
-        type: Sequelize.STRING(50),
+let User = sequelize.define('user', {
+    eid: {
+        type: Sequelize.STRING(30),
         primaryKey: true
     },
-    password: Sequelize.STRING(20)
+    password: Sequelize.STRING(20),
+    cname:Sequelize.STRING(255),
+    cadd: Sequelize.STRING(255),
+    cpro: Sequelize.STRING(255)
 }, {
     timestamps: false
 });
 
-module.exports = User;
+let Job = sequelize.define('user', {
+    jid: {
+        type: Sequelize.STRING(5),
+        primaryKey: true
+    },
+    eid: Sequelize.STRING(30),
+    title:Sequelize.STRING(255),
+    company: Sequelize.STRING(255),
+    jobdesc: Sequelize.STRING(255),
+    proposal:Sequelize.STRING(255),
+    deadline:Sequelize.STRING(255),
+    position:Sequelize.STRING(255),
+    nature:Sequelize.STRING(255),
+    tags:Sequelize.STRING(255),
+    workplace:Sequelize.STRING(255),
+    publish:Sequelize.STRING(1),
+}, {
+    timestamps: false
+});
+
+User.hasMany(Job);
+Job.belongsTo(User);
+
+module.exports = {User,Job};

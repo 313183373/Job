@@ -9,13 +9,12 @@ html
     script(src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
     script(type='text/javascript').
       $(function() {
-          if (sessionStorage.login!=='undefined') {
+          if (sessionStorage.login&&sessionStorage.login!=='undefined') {
               $('.login_button').hide();
               $('.personal_button').show();
               $('.logout_button').show();
               $('.postjob_button').prop('href','/post_job');
           } else {
-              console.log('没有登陆!');
               $('.login_button').show();
               $('.personal_button').hide();
               $('.postjob_button').prop('href','/signin');

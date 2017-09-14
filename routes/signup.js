@@ -4,7 +4,7 @@ let router = express.Router();
 
 const nodemailer = require('nodemailer');
 
-const User = require('../model/user');
+const User = require('../model/user').User;
 
 /*GET SIGN UP*/
 router.get('/', function (req, res) {
@@ -57,17 +57,17 @@ router.post('/check', function (req, res) {
     (async () => {
         let result = await User.findAll({
             where: {
-                email: email,
+                eid: email,
             }
         });
         if (result.length > 0) {
-            res.send('邮箱已经被注册!');
+            res.end('邮箱已经被注册!');
         } else {
             await User.create({
-                email: email,
+                eid: email,
                 password: password
             });
-            res.redirect('/');
+            res.end(email);
         }
     })();
 });
