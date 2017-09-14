@@ -26,12 +26,12 @@ let User = sequelize.define('user', {
     timestamps: false
 });
 
-let Job = sequelize.define('user', {
+let Job = sequelize.define('job', {
     jid: {
-        type: Sequelize.STRING(5),
-        primaryKey: true
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement:true
     },
-    eid: Sequelize.STRING(30),
     title:Sequelize.STRING(255),
     company: Sequelize.STRING(255),
     jobdesc: Sequelize.STRING(255),

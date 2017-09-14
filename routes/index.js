@@ -1,9 +1,16 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+
+let Job = require('../model/user').Job;
+let User=require('../model/user').User;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Job' }); //render 一个jade文件
+router.get('/', function (req, res, next) {
+    let result;
+    (async ()=>{
+        result=await Job.findAll();
+        res.render('index', {job_list:result}); //render 一个jade文件
+    })();
 });
 
 module.exports = router;
