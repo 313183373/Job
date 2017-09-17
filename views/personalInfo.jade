@@ -32,12 +32,17 @@ block content
             let cname=form.cname.value;
             let cadd=form.cadd.value;
             let cpro=form.cpro.value;
+            let cpw=form.cpw.value;
             if(!pw){
                 alert('密码不能为空!');
                 return ;
             }
             if(!chk_password(pw)){
                 alert('密码格式错误!');
+                return ;
+            }
+            if(cpw!==pw){
+                alert('两次密码输入不一致!');
                 return ;
             }
             $.post('/personal_info/change_info', {email,pw,cname,cadd,cpro},function (result) {
@@ -62,6 +67,19 @@ block content
             let reg2 = /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/;
             return reg2.test(pw);
         }
+
+        function delete_user() {
+            $.post('/personal_info/delete_user',{email},function (result) {
+                if(result==='ok'){
+                    sessionStorage.login=undefined;
+                    sessionStorage.useremail=undefined;
+                    window.location.href='/';
+                }else{
+                    alert('出现了神奇的错误!');
+                }
+            });
+        }
+
     link(rel='stylesheet', href='/stylesheets/personalInfo.css')
     .container
         .row
@@ -99,7 +117,7 @@ block content
                         div(style='height: 50px')
                         .btn.btn-default.text-center(style='margin-bottom: 15px', data-toggle='modal', data-target='#myModal') 修改信息
                         br
-                        .btn.btn-default.text-center 注销账户
+                        .btn.btn-default.text-center(onclick='delete_user()') 注销账户
             // 右侧：已发布工作
             #my-posts.col-md-6.col-md-offset-1
                 #my-posts-banner.page-header
@@ -164,6 +182,9 @@ block content
                         .form-group
                             label(for='inputPassword') 新密码
                             input#inputPassword.form-control(type='password', placeholder='密码', name='pw')
+                        .form-group
+                            label(for='inputConfirmPassword') 确认新密码
+                            input#inputConfirmPassword.form-control(type='password', placeholder='密码', name='cpw')
                         .form-group
                             label(for='inputCName') 公司名称
                             input#inputCName.form-control(type='text', placeholder='公司名称', name='cname')

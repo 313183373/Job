@@ -54,4 +54,21 @@ router.post('/change_info', function (req, res) {
     })();
 });
 
+router.post('/delete_user',function (req, res) {
+    (async ()=>{
+        let email=req.body.email;
+        let result=await User.destroy({
+            'where':{
+                'eid':email
+            }
+        });
+        console.log(result);
+        if(result>0){
+            res.end('ok');
+        }else{
+            res.end('error');
+        }
+    })();
+});
+
 module.exports = router;
