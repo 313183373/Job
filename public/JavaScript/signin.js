@@ -4,7 +4,7 @@ function chk_email(email) {
 }
 
 function chk_password(pw) {
-    if(pw===''||pw.length<8||pw.length>16){
+    if(pw===''||pw.length<8||pw.length>20){
         return false;
     }
     let reg1=/^[0-9A-Za-z]+$/;

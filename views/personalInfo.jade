@@ -2,24 +2,21 @@ extends layout
 
 block content
     script(type='text/javascript').
-        if(!sessionStorage.login||sessionStorage.login==='undefined'){
+        if (!sessionStorage.login || sessionStorage.login === 'undefined') {
             alert('请先登录!');
-            window.location.href='/';
+            window.location.href = '/';
         }
+        let email, password, cname, cadd, cpro;
         $(function () {
-            let email=sessionStorage.useremail;
-            let password;
-            let cname;
-            let cadd;
-            let cpro;
-            $.post('/personal_info/get_info',{email},function (result) {
-                result=JSON.parse(result);
+            email = sessionStorage.useremail;
+            $.post('/personal_info/get_info', {email}, function (result) {
+                result = JSON.parse(result);
                 console.log(result);
-                console.log(result.password,result.cname);
-                password=result.password;
-                cname=result.cname;
-                cadd=result.cadd;
-                cpro=result.cpro;
+                console.log(result.password, result.cname);
+                password = result.password;
+                cname = result.cname;
+                cadd = result.cadd;
+                cpro = result.cpro;
                 $('#eid').append(email);
                 $('#pw').append(password);
                 $('#cname').append(cname);
@@ -27,110 +24,164 @@ block content
                 $('#cpro').append(cpro);
             });
         })
-        
-        
-        function change_info() {
 
+
+        function change_info() {
+            let form=document.new_info;
+            let pw=form.pw.value;
+            let cname=form.cname.value;
+            let cadd=form.cadd.value;
+            let cpro=form.cpro.value;
+            if(!pw){
+                alert('密码不能为空!');
+                return ;
+            }
+            if(!chk_password(pw)){
+                alert('密码格式错误!');
+                return ;
+            }
+            $.post('/personal_info/change_info', {email,pw,cname,cadd,cpro},function (result) {
+                if(result==='ok'){
+                    alert('信息修改成功!');
+                    $('.close_button').click();
+                    window.location.href='/personal_info';
+                }else{
+                    alert('出现了神奇的错误!');
+                }
+            });
         }
-    link(rel='stylesheet',href='/stylesheets/personalInfo.css')
+
+        function chk_password(pw) {
+            if (pw === '' || pw.length < 8 || pw.length > 20) {
+                return false;
+            }
+            let reg1 = /^[0-9A-Za-z]+$/;
+            if (!reg1.test(pw)) {
+                return false;
+            }
+            let reg2 = /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/;
+            return reg2.test(pw);
+        }
+    link(rel='stylesheet', href='/stylesheets/personalInfo.css')
     .container
-      .row
-        // 左侧：个人信息及修改
-        #my-infomation.col-md-5
-          .panel.panel-default
-            .panel-heading
-              h2.panel-title.text-center
-                span.glyphicon.glyphicon-user
-                span.split
-                | 用户信息
-            .panel-body
-              ul.list-group
-                li.list-group-item#eid
-                  span.glyphicon.glyphicon-envelope
-                  span.split
-                  | 邮箱
-                li.list-group-item#pw
-                  span.glyphicon.glyphicon-lock
-                  span.split
-                  | 密码
-                li.list-group-item#cname
-                  span.glyphicon.glyphicon-info-sign
-                  span.split
-                  | 公司名称
-                li.list-group-item#cadd
-                  span.glyphicon.glyphicon-map-marker
-                  span.split
-                  | 公司地址
-                li.list-group-item#apro
-                  span.glyphicon.glyphicon-tag
-                  span.split
-                  | 公司所属行业
-                // 点击更改按钮后会多出“密码确认”、“现在的密码”两项
-              div(style='height: 50px')
-              .btn.btn-default.text-center(style='margin-bottom: 15px',data-toggle='modal', data-target='#myModal') 修改信息
-              br
-              .btn.btn-default.text-center 注销账户
-        // 右侧：已发布工作
-        #my-posts.col-md-6.col-md-offset-1
-          #my-posts-banner.page-header
-            h2
-              span.glyphicon.glyphicon-list
-              span.split
-              | 已发布工作
-          #my-posts-content
-            .panel.panel-default
-              .panel-heading
-                h3.panel-title 工作A
-                .condition 成功发布
-              .panel-body
-                | 工作职位A
-            .panel.panel-default
-              .panel-heading
-                h3.panel-title 工作B
-                .condition 成功发布
-              .panel-body
-                | 工作职位B
-            .panel.panel-default
-              .panel-heading
-                h3.panel-title 工作C
-                .condition 未发布
-              .panel-body
-                | 工作职位C
-            .panel.panel-default
-              .panel-heading
-                h3.panel-title 工作D
-                .condition 未发布
-              .panel-body
-                | 工作职位D
-          // 翻页组件
-          nav.text-center(aria-label='Page navigation')
-            ul.pagination
-              li
-                a(href='#', aria-label='Previous')
-                  span(aria-hidden='true') «
-              li
-                a(href='#') 1
-              li
-                a(href='#') 2
-              li
-                a(href='#') 3
-              li
-                a(href='#') 4
-              li
-                a(href='#') 5
-              li
-                a(href='#', aria-label='Next')
-                  span(aria-hidden='true') »
+        .row
+            // 左侧：个人信息及修改
+            #my-infomation.col-md-5
+                .panel.panel-default
+                    .panel-heading
+                        h2.panel-title.text-center
+                            span.glyphicon.glyphicon-user
+                            span.split
+                            | 用户信息
+                    .panel-body
+                        ul.list-group
+                            li.list-group-item#eid
+                                span.glyphicon.glyphicon-envelope
+                                span.split
+                                | 邮箱
+                            li.list-group-item#pw
+                                span.glyphicon.glyphicon-lock
+                                span.split
+                                | 密码
+                            li.list-group-item#cname
+                                span.glyphicon.glyphicon-info-sign
+                                span.split
+                                | 公司名称
+                            li.list-group-item#cadd
+                                span.glyphicon.glyphicon-map-marker
+                                span.split
+                                | 公司地址
+                            li.list-group-item#cpro
+                                span.glyphicon.glyphicon-tag
+                                span.split
+                                | 公司所属行业
+                            // 点击更改按钮后会多出“密码确认”、“现在的密码”两项
+                        div(style='height: 50px')
+                        .btn.btn-default.text-center(style='margin-bottom: 15px', data-toggle='modal', data-target='#myModal') 修改信息
+                        br
+                        .btn.btn-default.text-center 注销账户
+            // 右侧：已发布工作
+            #my-posts.col-md-6.col-md-offset-1
+                #my-posts-banner.page-header
+                    h2
+                        span.glyphicon.glyphicon-list
+                        span.split
+                        | 已发布工作
+                #my-posts-content
+                    .panel.panel-default
+                        .panel-heading
+                            h3.panel-title 工作A
+                            .condition 成功发布
+                        .panel-body
+                            | 工作职位A
+                    .panel.panel-default
+                        .panel-heading
+                            h3.panel-title 工作B
+                            .condition 成功发布
+                        .panel-body
+                            | 工作职位B
+                    .panel.panel-default
+                        .panel-heading
+                            h3.panel-title 工作C
+                            .condition 未发布
+                        .panel-body
+                            | 工作职位C
+                    .panel.panel-default
+                        .panel-heading
+                            h3.panel-title 工作D
+                            .condition 未发布
+                        .panel-body
+                            | 工作职位D
+                // 翻页组件
+                nav.text-center(aria-label='Page navigation')
+                    ul.pagination
+                        li
+                            a(href='#', aria-label='Previous')
+                                span(aria-hidden='true') «
+                        li
+                            a(href='#') 1
+                        li
+                            a(href='#') 2
+                        li
+                            a(href='#') 3
+                        li
+                            a(href='#') 4
+                        li
+                            a(href='#') 5
+                        li
+                            a(href='#', aria-label='Next')
+                                span(aria-hidden='true') »
     // Modal
     #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
-      .modal-dialog(role='document')
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
-            h4#myModalLabel.modal-title Modal title
-          .modal-body
-            | ...
-          .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save changes
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#myModalLabel.modal-title 修改个人信息
+                .modal-body
+                    form(name='new_info')
+                        .form-group
+                            label(for='inputPassword') 新密码
+                            input#inputPassword.form-control(type='password', placeholder='密码', name='pw')
+                        .form-group
+                            label(for='inputCName') 公司名称
+                            input#inputCName.form-control(type='text', placeholder='公司名称', name='cname')
+                        .form-group
+                            label(for='inputCAdd') 公司地址
+                            input#inputCAdd.form-control(type='text', placeholder='公司地址', name='cadd')
+                        .form-group
+                            label(for='inputCPro') 公司所属行业
+                            input#inputCPro.form-control(type='text', placeholder='公司所属行业', name='cpro')
+                        //.form-group
+                        //    label(for='exampleInputFile') File input
+                        //    input#exampleInputFile(type='file')
+                        //    p.help-block Example block-level help text here.
+                        //.checkbox
+                        //    label
+                        //        input(type='checkbox')
+                        //        |  Check me out
+                        //button.btn.btn-default(type='submit') Submit
+                .modal-footer
+                    button.btn.btn-default.close_button(type='button', data-dismiss='modal') 关闭
+                    button.btn.btn-primary(type='button', onclick='change_info()') 保存信息

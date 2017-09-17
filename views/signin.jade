@@ -28,7 +28,6 @@ block content
                 return;
             }
             $.post('/signin/check',$(form).serialize(),function (result) {
-                console.log('到这了');
                 if(result==='账号或密码错误!'){
                     alert('账号或密码错误');
                 }else{
