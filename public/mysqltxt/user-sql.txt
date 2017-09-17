@@ -8,7 +8,7 @@ cpro          公司所属行业
 
 ---
 
-CREATE TABLE user (
+CREATE TABLE users (
 eid  varchar(30) PRIMARY KEY ,
 password  varchar(20) NOT NULL ,
 cname  varchar(255) ,

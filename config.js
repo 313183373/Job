@@ -2,8 +2,8 @@ let config={
     database:'test',
     username:'www',
     password:'www',
-    host:'59b3b67514e68.gz.cdb.myqcloud.com',
-    port:5026
+    host:'rm-uf666l9f181m30sa1o.mysql.rds.aliyuncs.com',
+    port:3306
 };
 
 module.exports=config;

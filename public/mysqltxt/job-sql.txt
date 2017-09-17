@@ -15,9 +15,9 @@ publish       是否发布（1位是，0位否）
 
 ---
 
-CREATE TABLE job (
+CREATE TABLE jobs (
 jid  varchar(5) PRIMARY KEY ,
-eid  varchar(30) ,
+userEid  varchar(30) ,
 title  varchar(255) NOT NULL ,
 company  varchar(255) NOT NULL ,
 jobdesc  varchar(255) NOT NULL ,
@@ -28,7 +28,7 @@ nature  varchar(255) NOT NULL ,
 tags  varchar(255) ,
 workplace  varchar(255) NOT NULL ,
 publish  varchar(1) NOT NULL ,
-FOREIGN KEY (eid) REFERENCES user (eid)
+FOREIGN KEY (userEid) REFERENCES user (eid)
 )
 ;
 

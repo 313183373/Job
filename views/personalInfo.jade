@@ -2,7 +2,7 @@ extends layout
 
 block content
     script(type='text/javascript').
-        if(!sessionStorage.login||sessionStorage.login==='false'){
+        if(!sessionStorage.login||sessionStorage.login==='undefined'){
             alert('请先登录!');
             window.location.href='/';
         }
@@ -27,6 +27,11 @@ block content
                 $('#cpro').append(cpro);
             });
         })
+        
+        
+        function change_info() {
+
+        }
     link(rel='stylesheet',href='/stylesheets/personalInfo.css')
     .container
       .row
@@ -62,7 +67,7 @@ block content
                   | 公司所属行业
                 // 点击更改按钮后会多出“密码确认”、“现在的密码”两项
               div(style='height: 50px')
-              .btn.btn-default.text-center(style='margin-bottom: 15px') 修改信息
+              .btn.btn-default.text-center(style='margin-bottom: 15px',data-toggle='modal', data-target='#myModal') 修改信息
               br
               .btn.btn-default.text-center 注销账户
         // 右侧：已发布工作
@@ -116,3 +121,16 @@ block content
               li
                 a(href='#', aria-label='Next')
                   span(aria-hidden='true') »
+    // Modal
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title Modal title
+          .modal-body
+            | ...
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes
