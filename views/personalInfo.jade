@@ -11,8 +11,6 @@ block content
             email = sessionStorage.useremail;
             $.post('/personal_info/get_info', {email}, function (result) {
                 result = JSON.parse(result);
-                console.log(result);
-                console.log(result.password, result.cname);
                 password = result.password;
                 cname = result.cname;
                 cadd = result.cadd;
@@ -22,6 +20,19 @@ block content
                 $('#cname').append(cname);
                 $('#cadd').append(cadd);
                 $('#cpro').append(cpro);
+            });
+
+            $.post('/personal_info/get_my_job',{email},function (job_list) {
+                job_list=JSON.parse(job_list);
+                for (let job of job_list) {
+                    let title = job.title;
+                    let publish = job.publish==1?'成功发布':'未发布';
+                    let deadline = job.deadline;
+                    let list=$('#my-posts-content');
+                    let jid=job.jid;
+                    let new_item=$(`<div class="panel panel-default" onclick="document.location='/job_info?id=${jid}'"><div class="panel-heading"><h3 class="panel-title">${title}</h3><div class="condition">${publish}</div></div><div class="panel-body">${deadline}</div></div>`)
+                    list.append(new_item);
+                }
             });
         })
 
@@ -126,30 +137,30 @@ block content
                         span.split
                         | 已发布工作
                 #my-posts-content
-                    .panel.panel-default
-                        .panel-heading
-                            h3.panel-title 工作A
-                            .condition 成功发布
-                        .panel-body
-                            | 工作职位A
-                    .panel.panel-default
-                        .panel-heading
-                            h3.panel-title 工作B
-                            .condition 成功发布
-                        .panel-body
-                            | 工作职位B
-                    .panel.panel-default
-                        .panel-heading
-                            h3.panel-title 工作C
-                            .condition 未发布
-                        .panel-body
-                            | 工作职位C
-                    .panel.panel-default
-                        .panel-heading
-                            h3.panel-title 工作D
-                            .condition 未发布
-                        .panel-body
-                            | 工作职位D
+                    //.panel.panel-default
+                    //    .panel-heading
+                    //        h3.panel-title 工作A
+                    //        .condition 成功发布
+                    //    .panel-body
+                    //        | 工作职位A
+                    //.panel.panel-default
+                    //    .panel-heading
+                    //        h3.panel-title 工作B
+                    //        .condition 成功发布
+                    //    .panel-body
+                    //        | 工作职位B
+                    //.panel.panel-default
+                    //    .panel-heading
+                    //        h3.panel-title 工作C
+                    //        .condition 未发布
+                    //    .panel-body
+                    //        | 工作职位C
+                    //.panel.panel-default
+                    //    .panel-heading
+                    //        h3.panel-title 工作D
+                    //        .condition 未发布
+                    //    .panel-body
+                    //        | 工作职位D
                 // 翻页组件
                 nav.text-center(aria-label='Page navigation')
                     ul.pagination

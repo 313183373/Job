@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 
 let User = require('../model/user').User;
+let Job = require('../model/user').Job;
 
 /*GET PERSONAL INFOMATION PAGE*/
 router.get('/', function (req, res) {
@@ -35,39 +36,51 @@ router.post('/change_info', function (req, res) {
         let cpro = req.body.cpro;
         let result = await User.update(
             {
-                'password':pw,
-                'cname':cname,
-                'cadd':cadd,
-                'cpro':cpro
+                'password': pw,
+                'cname': cname,
+                'cadd': cadd,
+                'cpro': cpro
             },
             {
                 'where': {
-                    'eid':email
+                    'eid': email
                 }
             }
         );
-        if(result.length>0){
+        if (result.length > 0) {
             res.end('ok');
-        }else{
+        } else {
             res.end('error');
         }
     })();
 });
 
-router.post('/delete_user',function (req, res) {
-    (async ()=>{
-        let email=req.body.email;
-        let result=await User.destroy({
-            'where':{
-                'eid':email
+router.post('/delete_user', function (req, res) {
+    (async () => {
+        let email = req.body.email;
+        let result = await User.destroy({
+            'where': {
+                'eid': email
             }
         });
         console.log(result);
-        if(result>0){
+        if (result > 0) {
             res.end('ok');
-        }else{
+        } else {
             res.end('error');
         }
+    })();
+});
+
+
+router.post('/get_my_job', function (req, res) {
+    (async () => {
+        let result = await Job.findAll({
+            'where':{
+                'userEid':req.body.email
+            }
+        });
+        res.end(JSON.stringify(result));
     })();
 });
 
