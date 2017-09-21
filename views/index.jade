@@ -43,11 +43,12 @@ block content
                 th.col-md-3.title 公司名称
             //内容
             for job in job_list
-                tr(onclick="window.document.location='/job_info?id="+job.dataValues.jid+'\'')
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.position}
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
+                if job.dataValues.publish == '1'
+                    tr(onclick="window.document.location='/job_info?id="+job.dataValues.jid+'\'')
+                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.position}
+                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
+                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
+                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
             //tr#t_1(onclick="window.document.location = '#'")
             //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作职位
             //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作城市

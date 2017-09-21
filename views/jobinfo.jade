@@ -1,37 +1,66 @@
 extends layout
 
 block content
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(type='text/javascript').
+        $(function () {
+            let job_email=$('#hide_email').val();
+            let publish=$('#hide_publish').val();
+            console.log(publish);
+            if(sessionStorage.useremail===job_email){
+                $('#change_info_button').show();
+                if(publish==='1'){
+                    $('#publish_button').hide();
+                }else{
+                    $('#pubiish_button').show();
+                }
+            }else{
+                $('#change_info_button').hide();
+                $('#publish_button').hide();
+            }
+        })
     div(style='margin:30px')
-        h1#JobTitle 在这里显示工作职位
-            h3#JobCompany 在这里显示招聘企业
-            .post-description
-                p
-                    strong 申请截止日期:
-                p#JobDeadline
-                    | 在这里显示工作类型
-                p
-                    strong 工作类型:
-                p#JobCategory
-                    | 在这里显示工作类型
-                p
-                    strong 工作性质:
-                p#JobType
-                    | 在这里显示工作性质
-                p
-                    strong 工作地:
-                p#JobAddress
-                    | 在这里显示工作地
-                p
-                    strong 工作描述:
-                p#JobDescription
-                    | 在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述在这里添加职位描述
-            .well
-                h3 申请方式:
-                .post-description#JobApply
-                    p
-                        | 在这里添加申请方式
-                        | 在这里添加申请方式描述
-                    ul
-                        li 在这里添加申请要求1
-                        li 在这里添加申请要求2
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title Title
+            .panel-body
+                | #{job_info.dataValues.title}
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title Company
+            .panel-body
+                | #{job_info.dataValues.company}
+        //.post-description
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title Deadline
+            .panel-body
+                | #{job_info.dataValues.deadline}
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title Type
+            .panel-body
+                | #{job_info.dataValues.position}
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title Category
+            .panel-body
+                | #{job_info.dataValues.nature}
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title Address
+            .panel-body
+                | #{job_info.dataValues.workplace}
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title Description
+            .panel-body
+                | #{job_info.dataValues.jobdesc}
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title How to apply
+            .panel-body
+                | #{job_info.dataValues.proposal}
+        button#change_info_button.btn.btn-default(type='button',onclick='') 修改信息
+        button#publish_button.btn.btn-default(type='button',onclick='',style='margin-left:20px') 发布工作
+        input#hide_email(hidden,value=job_info.dataValues.userEid)
+        input#hide_publish(hidden,value=job_info.dataValues.publish)
