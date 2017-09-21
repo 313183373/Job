@@ -112,11 +112,11 @@ block content
                     street
                 },
                 function (result) {
-                    result=JSON.parse(result);
+                    result = JSON.parse(result);
                     if (result !== 'error') {
                         alert('工作创建成功!');
                         console.log(result);
-                        window.location.href="/job_info?id='"+result.jid+"'";
+                        window.location.href = "/job_info?id='" + result.jid + "'";
                     } else {
                         alert('出现神奇的错误!');
                     }
@@ -127,24 +127,24 @@ block content
             p.line
                 b.need *
                 | 招聘标题
-            input#postJobTitle.line
+            input#postJobTitle.line.form-control
         .postCompany
             p.line
                 b.need *
                 | 招聘公司
-            input#postJobCompany.line
+            input#postJobCompany.line.form-control
         .postDescription
             p.line
                 b.need *
                 | 职位描述（支持Markdown）
                 small
                     a(href='http://www.appinn.com/markdown/') Markdown语法说明请点击此处
-            textarea#postJobDescription.line
+            textarea#postJobDescription.line.form-control
         .howToApply
             p.line
                 b.need *
                 | 申请方式（支持Markdown）
-            textarea#postJobApply.line
+            textarea#postJobApply.line.form-control
         .expiryDate
             p.line
                 b.need *
@@ -157,7 +157,7 @@ block content
             p.line
                 b.need *
                 | 工作类型
-            select#postJobCategory
+            select#postJobCategory.line.form-control
                 option(value='')
                 option(value='研发') 研发
                 option(value='教育') 教育
@@ -173,7 +173,7 @@ block content
             p.line
                 b.need *
                 | 工作性质
-            select#postJobType
+            select#postJobType.line.form-control
                 option(value='')
                 option(value='志愿') 志愿
                 option(value='全职') 全职
@@ -181,7 +181,7 @@ block content
                 option(value='合同') 合同
         .postTages
             p.line  标签
-            input#postJobTags.line
+            input#postJobTags.line.form-control
         .postCity
             p.line
                 b.need *
@@ -197,7 +197,7 @@ block content
                 span 国内
             #china
         div
-            button#createIfo(onclick='post_job()') 创建招聘信息
+            button#createIfo.btn.btn-default(onclick='post_job()') 创建招聘信息
             small
                 | 带
                 b.need  *
@@ -214,4 +214,6 @@ block content
                 language: 'zh-CN'
             });
         })
+
+
 
