@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
             });
             res.render('index', {job_list:result}); //render 一个jade文件
         })();
-    }else if(!position){
+    }else if(!position&&nature){
         (async ()=>{
             result=await Job.findAll({
                 where:{
@@ -28,12 +28,23 @@ router.get('/', function (req, res, next) {
             });
             res.render('index', {job_list:result}); //render 一个jade文件
         })();
-    }else if(!nature){
+    }else if(!nature&&position){
         (async ()=>{
             result=await Job.findAll({
                 where:{
                     publish:'1',
                     position:position
+                }
+            });
+            res.render('index', {job_list:result}); //render 一个jade文件
+        })();
+    }else{
+        (async ()=>{
+            result=await Job.findAll({
+                where:{
+                    publish:'1',
+                    position:position,
+                    nature:nature
                 }
             });
             res.render('index', {job_list:result}); //render 一个jade文件
