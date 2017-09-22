@@ -16,5 +16,21 @@ router.get('/', function (req, res, next) {
     })();
 });
 
+router.post('/publish',function (req, res) {
+    (async()=>{
+        let result=await Job.update({
+            publish:1
+        },{
+            where:{
+                jid:req.body.jid
+            }
+        });
+        if(result.length>0) {
+            res.end('ok');
+        }else{
+            res.end('error');
+        }
+    })();
+});
 
 module.exports = router;

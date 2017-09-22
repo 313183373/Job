@@ -42,6 +42,10 @@ let Job = sequelize.define('job', {
     tags:Sequelize.STRING(255),
     workplace:Sequelize.STRING(255),
     publish:Sequelize.STRING(1),
+    country:Sequelize.STRING(255),
+    city:Sequelize.STRING(255),
+    street:Sequelize.STRING(255),
+    china:Sequelize.STRING(1)
 }, {
     timestamps: false
 });

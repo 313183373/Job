@@ -44,7 +44,7 @@ block content
             //内容
             for job in job_list
                 tr(onclick="window.document.location='/job_info?id="+job.dataValues.jid+'\'')
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.position}
+                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.title}
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
