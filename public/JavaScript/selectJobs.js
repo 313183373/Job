@@ -1,5 +1,7 @@
 var showJobs = require('./show.js');
 
+let Job=require('../../model/user').Job;
+
 function selectJobsBy(condition) {
     // 1.连接数据库
     let mysql = require('mysql');

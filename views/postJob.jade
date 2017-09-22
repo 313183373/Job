@@ -116,7 +116,7 @@ block content
                     if (result !== 'error') {
                         alert('工作创建成功!');
                         console.log(result);
-                        window.location.href = "/job_info?id='" + result.jid + "'";
+                        window.location.href = "/job_info?id=" + result.jid;
                     } else {
                         alert('出现神奇的错误!');
                     }
@@ -127,30 +127,46 @@ block content
             p.line
                 b.need *
                 | 招聘标题
-            input#postJobTitle.line.form-control
+            if job_info != 'null'
+                input#postJobTitle.line.form-control(value=job_info.dataValues.title)
+            else
+                input#postJobTitle.line.form-control
+
         .postCompany
             p.line
                 b.need *
                 | 招聘公司
-            input#postJobCompany.line.form-control
+            if job_info != 'null'
+                input#postJobCompany.line.form-control(value=job_info.dataValues.company)
+            else
+                input#postJobCompany.line.form-control
         .postDescription
             p.line
                 b.need *
                 | 职位描述（支持Markdown）
                 small
                     a(href='http://www.appinn.com/markdown/') Markdown语法说明请点击此处
-            textarea#postJobDescription.line.form-control
+            if job_info != 'null'
+                textarea#postJobDescription.line.form-control #{job_info.dataValues.jobdesc}
+            else
+                textarea#postJobDescription.line.form-control
         .howToApply
             p.line
                 b.need *
                 | 申请方式（支持Markdown）
-            textarea#postJobApply.line.form-control
+            if job_info != 'null'
+                textarea#postJobApply.line.form-control #{job_info.dataValues.proposal}
+            else
+                textarea#postJobApply.line.form-control
         .expiryDate
             p.line
                 b.need *
                 | 截止日期
             .input-group.date.datepicker
-                input#postJobDeadline.form-control(type='text')
+                if job_info != 'null'
+                    input#postJobDeadline.form-control(type='text',value=job_info.dataValues.deadline)
+                else
+                    input#postJobDeadline.form-control(type='text')
                 .input-group-addon
                     span.glyphicon.glyphicon-th
         .postCategory
@@ -197,7 +213,10 @@ block content
                 span 国内
             #china
         div
-            button#createIfo.btn.btn-default(onclick='post_job()') 创建招聘信息
+            if job_info != 'null'
+                button#createIfo.btn.btn-default(onclick='post_job()') 修改招聘信息
+            else
+                button#createIfo.btn.btn-default(onclick='post_job()') 发布招聘信息
             small
                 | 带
                 b.need  *

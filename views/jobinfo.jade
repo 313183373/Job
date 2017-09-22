@@ -2,10 +2,13 @@ extends layout
 
 block content
     script(type='text/javascript').
+        let job_email;
+        let publish;
+        let jid;
         $(function () {
-            let job_email=$('#hide_email').val();
-            let publish=$('#hide_publish').val();
-            console.log(publish);
+            job_email=$('#hide_email').val();
+            publish=$('#hide_publish').val();
+            jid=$('#hide_jid').val();
             if(sessionStorage.useremail===job_email){
                 $('#change_info_button').show();
                 if(publish==='1'){
@@ -18,6 +21,10 @@ block content
                 $('#publish_button').hide();
             }
         })
+
+        function change_job_info() {
+            window.location.href='/post_job?jid='+jid;
+        }
     div(style='margin:30px')
         .panel.panel-default
             .panel-heading
@@ -60,7 +67,8 @@ block content
                 h3.panel-title How to apply
             .panel-body
                 | #{job_info.dataValues.proposal}
-        button#change_info_button.btn.btn-default(type='button',onclick='') 修改信息
+        button#change_info_button.btn.btn-default(type='button',onclick='change_job_info()') 修改信息
         button#publish_button.btn.btn-default(type='button',onclick='',style='margin-left:20px') 发布工作
         input#hide_email(hidden,value=job_info.dataValues.userEid)
         input#hide_publish(hidden,value=job_info.dataValues.publish)
+        input#hide_jid(hidden,value=job_info.dataValues.jid)

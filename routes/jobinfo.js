@@ -12,7 +12,6 @@ router.get('/', function (req, res, next) {
             }
         });
         job=job[0];
-        console.log(job);
         res.render('jobinfo',{job_info:job});
     })();
 });

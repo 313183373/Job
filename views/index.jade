@@ -6,9 +6,9 @@ block content
         dl
             dt.title 工作职位
             dd
-                a.text-success.col-md-2(name='all', value='#', href='javascript:;') All Jobs
-                a.text-success.col-md-2(name='Development', value='#', href='javascript:;') Development
-                a.text-success.col-md-2(name='Education', value='#', href='javascript:;') Education
+                a.text-success.col-md-2(name='all', value='#', href='/') All Jobs
+                a.text-success.col-md-2(name='Development', value='#', href='/?position=development') Development
+                a.text-success.col-md-2(name='Education', value='#', href='/?position=education') Education
                 a.text-success.col-md-2(name='Marketing', value='#', href='javascript:;') Marketing
                 a.text-success.col-md-2(name='ProductManagement', value='#', href='javascript:;')
                     | Product
@@ -43,12 +43,11 @@ block content
                 th.col-md-3.title 公司名称
             //内容
             for job in job_list
-                if job.dataValues.publish == '1'
-                    tr(onclick="window.document.location='/job_info?id="+job.dataValues.jid+'\'')
-                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.position}
-                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
-                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
-                        td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
+                tr(onclick="window.document.location='/job_info?id="+job.dataValues.jid+'\'')
+                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.position}
+                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
+                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
+                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
             //tr#t_1(onclick="window.document.location = '#'")
             //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作职位
             //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作城市
