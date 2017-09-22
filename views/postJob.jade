@@ -17,6 +17,13 @@ block content
         }
         $(function () {
             initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '44', '0', '0');
+            $('#postJobCategory').val($('#hide_position').text());
+            $('#postJobType').val($('#hide_nature').text());
+            if($('#hide_china').text()==='1'){
+                $('#guonei').click();
+            }else{
+                $('#haiwai').click();
+            }
         });
 
         function post_job() {
@@ -96,7 +103,7 @@ block content
                 return;
             }
             $.post('/post_job/create_job', {
-                    'email': sessionStorage.useremail,
+                    email: sessionStorage.useremail,
                     title,
                     company,
                     desc,
@@ -115,8 +122,112 @@ block content
                     result = JSON.parse(result);
                     if (result !== 'error') {
                         alert('工作创建成功!');
-                        console.log(result);
                         window.location.href = "/job_info?id=" + result.jid;
+                    } else {
+                        alert('出现神奇的错误!');
+                    }
+                });
+        }
+
+        function update_job() {
+            let title = $('#postJobTitle').val();
+            let company = $('#postJobCompany').val();
+            let desc = $('#postJobDescription').val();
+            let apply = $('#postJobApply').val();
+            let deadline = $('#postJobDeadline').val();
+            let category = $('#postJobCategory').val();
+            let type = $('#postJobType').val();
+            let tags = $('#postJobTags').val();
+            let radio1 = $(':radio')[0];
+            let radio2 = $(':radio')[1];
+            if (!title) {
+                alert('请输入工作标题!');
+                $('#postJobTitle').focus();
+                return;
+            }
+            if (!company) {
+                alert('请输入公司名称!');
+                $('#postJobCompany').focus();
+                return;
+            }
+            if (!desc) {
+                alert('请输入职位描述!');
+                $('#postJobDescription').focus();
+                return;
+            }
+            if (!apply) {
+                alert('请输入申请方式!');
+                $('#postJobApply').focus();
+                return;
+            }
+            if (!deadline) {
+                alert('请选择截止日期!');
+                $('#postJobDeadline').focus();
+                return;
+            }
+            if (!category) {
+                alert('请选择工作类型!');
+                $('#postJobCategory').focus();
+                return;
+            }
+            if (!type) {
+                alert('请选择工作性质!');
+                $('#postJobType').focus();
+                return;
+            }
+            if (radio1.checked) {
+                var oCountry = country[$('#postJobCountry').val()];
+                var oCity = $('#postJobCity').val();
+                if (!oCountry || !oCity) {
+                    alert('请填写工作地!');
+                    return;
+                }
+            } else if (radio2.checked) {
+                var prov = area_array[$('#seachprov').val()];
+                if (!prov || prov === '请选择') {
+                    alert('请选择工作地!');
+                    return;
+                }
+                var city = l_arr[$('#seachcity').val()] ? l_arr[$('#seachcity').val()] : sub_array[$('#seachprov').val()][$('#seachcity').val()];
+                if (!city || city === '请选择') {
+                    alert('请选择工作地!');
+                    return;
+                }
+                if ($('#seachdistrict option').length > 1) {
+                    var street = sub_arr[$('#seachcity').val()][$('#seachdistrict').val()];
+                    if (!street || street === '请选择') {
+                        alert('请选择工作地!');
+                        return;
+                    }
+                }
+            } else {
+                alert('请选择工作地!');
+                $(':radio')[0].focus();
+                return;
+            }
+            $.post('/post_job/change_info', {
+                    email: sessionStorage.useremail,
+                    title,
+                    company,
+                    desc,
+                    apply,
+                    deadline,
+                    category,
+                    type,
+                    tags,
+                    oCountry,
+                    oCity,
+                    prov,
+                    city,
+                    street,
+                    jid:$('#hide_jid').text(),
+                    publish:$('#hide_publish').text()
+                },
+                function (result) {
+                    if (result !== 'error') {
+                        alert('信息修改成功!');
+                        window.location.href = "/job_info?id=" + result;
+
                     } else {
                         alert('出现神奇的错误!');
                     }
@@ -197,30 +308,41 @@ block content
                 option(value='合同') 合同
         .postTages
             p.line  标签
-            input#postJobTags.line.form-control
+            if job_info != 'null'
+                input#postJobTags.line.form-control(value=job_info.tags)
+            else
+                input#postJobTags.line.form-control
         .postCity
             p.line
                 b.need *
                 | 工作地
             .chooseFrame
-                input.radio(name='chooseCity', type='radio', onclick='chooseCountry()')
+                input#haiwai.radio(name='chooseCity', type='radio', onclick='chooseCountry()')
                 span 海外：(地区+国家)
             // 国家选择
             #overseas
             // 国内城市选择器
             .chooseFrame
-                input.radio(name='chooseCity', type='radio', onclick='chooseChineseProv()')
+                input#guonei.radio(name='chooseCity', type='radio', onclick='chooseChineseProv()')
                 span 国内
             #china
         div
             if job_info != 'null'
-                button#createIfo.btn.btn-default(onclick='post_job()') 修改招聘信息
+                button#createIfo.btn.btn-default(onclick='update_job()') 修改招聘信息
             else
                 button#createIfo.btn.btn-default(onclick='post_job()') 发布招聘信息
             small
                 | 带
                 b.need  *
                 | 的为必填项
+            p#hide_position(hidden) #{job_info.position}
+            p#hide_nature(hidden) #{job_info.nature}
+            p#hide_china(hidden) #{job_info.china}
+            p#hide_country(hidden) #{job_info.country}
+            p#hide_city(hidden) #{job_info.city}
+            p#hide_street(hidden) #{job_info.street}
+            p#hide_jid(hidden) #{job_info.jid}
+            p#hide_publish(hidden) #{job_info.publish}
     //aside
         h3 Markdown预览模块
 

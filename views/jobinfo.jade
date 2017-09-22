@@ -25,6 +25,17 @@ block content
         function change_job_info() {
             window.location.href='/post_job?jid='+jid;
         }
+
+        function publish_job() {
+            $.post('/job_info/publish',{jid},function (result) {
+                if(result==='ok'){
+                    alert('发布成功!');
+                    window.location.href='/personal_info';
+                }else{
+                    alert('发生了神奇的错误!');
+                }
+            });
+        }
     div(style='margin:30px')
         .panel.panel-default
             .panel-heading
@@ -68,7 +79,7 @@ block content
             .panel-body
                 | #{job_info.dataValues.proposal}
         button#change_info_button.btn.btn-default(type='button',onclick='change_job_info()') 修改信息
-        button#publish_button.btn.btn-default(type='button',onclick='',style='margin-left:20px') 发布工作
+        button#publish_button.btn.btn-default(type='button',onclick='publish_job()',style='margin-left:20px') 发布工作
         input#hide_email(hidden,value=job_info.dataValues.userEid)
         input#hide_publish(hidden,value=job_info.dataValues.publish)
         input#hide_jid(hidden,value=job_info.dataValues.jid)
