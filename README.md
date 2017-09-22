@@ -68,14 +68,7 @@ for job in job_list
 - 至少支持根据工作的标题、公司名称和职位描述进行模糊搜索
 
 
-
-没做，没怎么想
-function resolve(str){
-   //提取搜索词
-   words = str.trim().split(' ');
-   words = words.filter(function(word){return word!==''});
-   return words;
-}
+mohu.js  selectJobs.js
 
 ### 5.查看工作详情
 

@@ -1,16 +1,20 @@
-var showJobs = require('./show.js');
+//输出搜索结果
+function showJobs(rows) {  
+    for (var i = 0, usr; usr = rows[i++];) {
+        console.log(usr.title);  
+    }
+}
 
-let Job=require('../../model/user').Job;
-
-function selectJobsBy(condition) {
+//筛选
+function selectJobsBy(url) {
     // 1.连接数据库
     let mysql = require('mysql');
 
     let connection = mysql.createConnection({
-        host: 'rm-uf666l9f181m30sa1o.mysql.rds.aliyuncs.com',
-        user: 'www',
-        password: 'www',
-        database: 'test',
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'jbdb',
         port: '3306'
     });
 
@@ -23,17 +27,6 @@ function selectJobsBy(condition) {
     });
 
     //2.查询
-    let url;
-    let natures = ['志愿', '全职', '兼职', '合同'];
-    if (condition === 'all') {
-        url = "select * from jobs where publish='1';";
-    }
-    else if (natures.includes(condition)) {
-        url = `select * from jobs where publish='1' and nature='${condition}';`;
-    }
-    else {
-        url = `select * from jobs where publish='1' and position='${condition}';`;
-    }
     connection.query(url, function (err, rows, fields) {
         if (err) throw err;
 
@@ -46,4 +39,4 @@ function selectJobsBy(condition) {
     connection.end();
 }
 
-selectJobsBy('test');
+module.exports = selectJobsBy;
