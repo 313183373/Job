@@ -6,32 +6,26 @@ block content
         dl
             dt.title 工作职位
             dd
-                a.text-success.col-md-2(name='all', value='#', href='/') All Jobs
-                a.text-success.col-md-2(name='Development', value='#', href='/?position=development') Development
-                a.text-success.col-md-2(name='Education', value='#', href='/?position=education') Education
-                a.text-success.col-md-2(name='Marketing', value='#', href='javascript:;') Marketing
-                a.text-success.col-md-2(name='ProductManagement', value='#', href='javascript:;')
-                    | Product
-                    | Management
-                a.text-success.col-md-2(name='AccountManagement', value='#', href='javascript:;')
-                    | Account
-                    | Management
-                a.text-success.col-md-2(name='BusinessDevelopment', value='#', href='javascript:;')
-                    | Business
-                    | Development
-                a.text-success.col-md-2(name='Client', value='#', href='javascript:;') Client Services
-                a.text-success.col-md-2(name='Communication', value='#', href='javascript:;') Communications
-                a.text-success.col-md-2(name='CustomerService', value='#', href='javascript:;') Customer Service
-                a.text-success.col-md-2(name='Design', value='#', href='javascript:;') Design
+                a.text-success.col-md-2(name='all', href='/') 所有职业
+                a.text-success.col-md-2(name='Development', href='/?position=研发') 研发
+                a.text-success.col-md-2(name='Education', href='/?position=教育') 教育
+                a.text-success.col-md-2(name='Marketing', href='/?position=市场营销') 市场营销
+                a.text-success.col-md-2(name='ProductManagement', href='/?position=产品经理') 产品经理
+                a.text-success.col-md-2(name='AccountManagement', href='/?position=客户经理') 客户经理
+                a.text-success.col-md-2(name='BusinessDevelopment', href='/?position=业务发展') 业务发展（BD）
+                a.text-success.col-md-2(name='Client', href='/?position=售前服务') 售前服务
+                a.text-success.col-md-2(name='Communication', href='/?position=通信') 通信
+                a.text-success.col-md-2(name='CustomerService', href='/?position=售后服务') 售后服务
+                a.text-success.col-md-2(name='Design', href='/?position=设计') 设计
     // 工作性质栏
     .container.bod
         dl
             dt.title 工作性质
             dd
-                a.text-success.col-md-2(name='Volunteer', value='600230', href='javascript:;') Volunteer
-                a.text-success.col-md-2(name='Permanent', value='600230', href='javascript:;') Permanent
-                a.text-success.col-md-2(name='Freelance', value='600230', href='javascript:;') Freelance
-                a.text-success.col-md-2(name='Contract', value='600230', href='javascript:;') Contract
+                a.text-success.col-md-2(name='Volunteer', href='/?nature=志愿') 志愿
+                a.text-success.col-md-2(name='Permanent', href='/?nature=全职') 全职
+                a.text-success.col-md-2(name='Freelance', href='/?nature=兼职') 兼职
+                a.text-success.col-md-2(name='Contract', href='/?nature=合同') 合同
     // 招聘信息
     .container
         table.table.table-hover
@@ -48,14 +42,4 @@ block content
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
-            //tr#t_1(onclick="window.document.location = '#'")
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作职位
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作城市
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作性质
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 公司名称
-            //tr#t_2(onclick="window.document.location = '#'")
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作职位
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作城市
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 工作性质
-            //    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') 公司名称
     // 版权

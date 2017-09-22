@@ -43,7 +43,7 @@ for job in job_list
 
 
 
-没做，初步想法是点击后，传递到后台读取对应的joblist，然后重新定位到／页面，然后传给index.jade。
+已完成。
 
 ### 3.根据工作性质过滤职位
 
@@ -56,7 +56,7 @@ for job in job_list
 
 
 
-没做，同上
+已完成。
 
 ### 4.搜索职位(参考网站还没有这个)
 
@@ -70,6 +70,12 @@ for job in job_list
 
 
 没做，没怎么想
+function resolve(str){
+   //提取搜索词
+   words = str.trim().split(' ');
+   words = words.filter(function(word){return word!==''});
+   return words;
+}
 
 ### 5.查看工作详情
 

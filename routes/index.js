@@ -33,6 +33,7 @@ router.get('/', function (req, res, next) {
             result=await Job.findAll({
                 where:{
                     publish:'1',
+                    position:position
                 }
             });
             res.render('index', {job_list:result}); //render 一个jade文件
