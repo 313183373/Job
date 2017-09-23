@@ -1,6 +1,99 @@
 extends layout
 
 block content
+    script(type='text/javascript').
+        let curPage;
+        let pageSize=10;
+        let direct;
+        let length;
+        let pages;
+        let begin;
+        let end;
+        $(function () {
+            length=$('table tr').length-1;
+            pages=Math.ceil(length/pageSize);
+            curPage=1;
+            direct=0;
+            showPage();
+
+            $('li.fir_page').click(function () {
+                curPage=1;
+                direct=0;
+                showPage();
+            });
+
+            $('li.pre_page').addClass('disabled')
+
+            $('li.pre_page').click(function () {
+                if(curPage>1) {
+                    direct = -1;
+                    showPage();
+                }
+            });
+
+            $('li.nex_page').click(function () {
+                if(curPage<pages) {
+                    direct = 1;
+                    showPage();
+                }
+            });
+
+            $('li.las_page').click(function () {
+                curPage=pages;
+                direct=0;
+                showPage();
+            })
+        })
+
+
+        function showPage() {
+            switch (direct){
+                case 0:{
+                    begin=(curPage-1)*pageSize+1;
+                    end=begin+pageSize-1;
+                    $('table tr').each(function (index) {
+                        if(index>=begin&&index<=end||index===0){
+                            $(this).show();
+                        }else{
+                            $(this).hide();
+                        }
+                    });
+                    if(curPage===1){
+                        $('li.pre_page').addClass('disabled');
+                        //$('li.pre_page').unbind();
+                    }else{
+                        $('li.pre_page').removeClass('disabled');
+                        //$('li.pre_page').click(function () {
+                        //    direct = -1;
+                        //   showPage();
+                        //});
+                    }
+                    if(curPage===pages){
+                        $('li.nex_page').addClass('disabled');
+                        //$('li.nex_page').unbind();
+                    }else{
+                        $('li.nex_page').removeClass('disabled');
+                        //$('li.nex_page').click(function () {
+                        //    direct = 1;
+                        //    showPage();
+                        //});
+                    }
+                    break;
+                }
+                case 1:{
+                    curPage++;
+                    direct=0;
+                    showPage();
+                    break;
+                }
+                case -1:{
+                    curPage--;
+                    direct=0;
+                    showPage();
+                    break;
+                }
+            }
+        }
     // 工作职位栏
     .container.bod
         dl
@@ -42,4 +135,15 @@ block content
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
                     td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
+
+    nav(aria-label='...')
+        ul.pager
+            li.fir_page
+                a(style='color:grey;') 首页
+            li.pre_page
+                a(style='color:grey') 上一页
+            li.nex_page
+                a(style='color:grey') 下一页
+            li.las_page
+                a(style='color:grey') 尾页
     // 版权
