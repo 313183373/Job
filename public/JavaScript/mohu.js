@@ -23,14 +23,14 @@ function showJobs(rows) {
 //模糊搜索主程序
 function mohuSelect(str) {
     let words = resolve(str);
-    let url = `select * from jobs where `;
+    et url = `select * from jobs where (`;
     for (let i = 0; i < words.length; i++) {
         url += `title like '${words[i]}' OR workplace like '${words[i]}' OR jobdesc like '${words[i]}'`;
         if (words[i + 1]) {
             url += ' OR ';
         }
     }
-    url += ';';
+    url += `) AND publish='1';`;
     console.log(url);
     selectJobsBy(url);
 }
