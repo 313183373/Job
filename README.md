@@ -15,20 +15,6 @@
 
 
 
-该项任务已经基本完成，通过在模版网页中添加一个循环添加的语句实现自动吧从数据库中读取到的数据显示出来，并且添加点击事件，设置对应的url
-
-```jade
-for job in job_list
-                tr(onclick="/job_info?id="+job.dataValues.jid)
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.position}
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.workplace}
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.nature}
-                    td.col-md-3(style='padding-top: 15px; padding-bottom: 15px;') #{job.dataValues.company}
-```
-
-
-
-现在只需要把对应的job_info的route和jade写好，也就是工作详情界面，通过route来获取query的jid，然后从数据库中读取数据，传给jade，然后jade自动生成界面，也就是工作详情界面。
 
 
 
@@ -43,7 +29,7 @@ for job in job_list
 
 
 
-已完成。
+这个过滤器和工作性质的过滤器现在还不能叠加
 
 ### 3.根据工作性质过滤职位
 
@@ -70,6 +56,8 @@ for job in job_list
 
 mohu.js  selectJobs.js
 
+还未完成
+
 ### 5.查看工作详情
 
 作为游客和注册登陆的用户，可以查看每一个已发布工作的详细信息。
@@ -85,7 +73,7 @@ mohu.js  selectJobs.js
 
 
 
-没做，跟第一个要求有联系，也就是要把工作详情页面先做出来，然后由route根据工作jid来获取工作详细信息传递给jade
+
 
 ### 6.发布一个工作信息
 
@@ -126,7 +114,7 @@ mohu.js  selectJobs.js
 
 
 
-已做完，但是查看工作详情界面还没有完成，所以虽然已经连接到那个网址了，但是是没有界面的。
+
 
 ### 8.用户查看自己创建的工作详情
 
@@ -147,7 +135,7 @@ mohu.js  selectJobs.js
 
 
 
-没做。这个跟首页的工作列表应该是同理。
+
 
 ### 9.修改账户信息
 
@@ -162,9 +150,6 @@ mohu.js  selectJobs.js
   3. 点击更改按钮，如果现在的密码输入错误，那就修改不会成功，会有错误提示，如果全部信息填写正确，那么修改成功，返回首页。
   4. 注销账号的按钮，单击之后就会注销账户，回到未登录状态的首页。(这个注销账号的意思应该是删除账号 参考参考网站)
 
-
-
-已经完成，需测试.
 
 ### 10.登陆
 
