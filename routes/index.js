@@ -52,4 +52,26 @@ router.get('/', function (req, res, next) {
     }
 });
 
+router.post('/filter_job_position',function (req, res) {
+    (async ()=>{
+        let result=await Job.findAll({
+            where:{
+                position:req.body.position
+            }
+        });
+        res.end(JSON.stringify(result));
+    })();
+});
+
+router.post('/filter_job_nature',function (req, res) {
+    (async ()=>{
+        let result=await Job.findAll({
+            where:{
+                nature:req.body.nature
+            }
+        });
+        res.end(JSON.stringify(result));
+    })();
+});
+
 module.exports = router;

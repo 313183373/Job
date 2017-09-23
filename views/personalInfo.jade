@@ -139,11 +139,7 @@ block content
             let cadd=form.cadd.value;
             let cpro=form.cpro.value;
             let cpw=form.cpw.value;
-            if(!pw){
-                alert('密码不能为空!');
-                return ;
-            }
-            if(!chk_password(pw)){
+            if(pw&&!chk_password(pw)){
                 alert('密码格式错误!');
                 return ;
             }

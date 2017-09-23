@@ -34,19 +34,35 @@ router.post('/change_info', function (req, res) {
         let cname = req.body.cname;
         let cadd = req.body.cadd;
         let cpro = req.body.cpro;
-        let result = await User.update(
-            {
-                'password': pw,
-                'cname': cname,
-                'cadd': cadd,
-                'cpro': cpro
-            },
-            {
-                'where': {
-                    'eid': email
+        let result;
+        if(pw) {
+            result = await User.update(
+                {
+                    'password': pw,
+                    'cname': cname,
+                    'cadd': cadd,
+                    'cpro': cpro
+                },
+                {
+                    'where': {
+                        'eid': email
+                    }
                 }
-            }
-        );
+            );
+        }else{
+            result= await User.update(
+                {
+                    'cname':cname,
+                    'cadd':cadd,
+                    'cpro':cpro
+                }
+                ,{
+                    where:{
+                        eid:email
+                    }
+                }
+            )
+        }
         if (result.length > 0) {
             res.end('ok');
         } else {
