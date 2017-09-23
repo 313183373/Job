@@ -28,6 +28,19 @@ html
           location.href='/';
       }
 
+      function query() {
+          let content=$('#navbar-search').val();
+          $.post('/queryjob',{content},function (result) {
+              if(result!=='error'){
+                  let info=result;
+                  //let info=new Buffer(result).toString('base64');
+                  window.location.href='/?info='+info;
+              }else{
+                  alert('发生了神奇的错误!');
+              }
+          })
+      }
+
     title CODING GIRLS CLUB
   body
     nav.navbar.navbar-default
@@ -49,7 +62,7 @@ html
                 .form-group
                   input#navbar-search.form-control(type='text', placeholder='请输入您希望查询的关键词')
                 span(style='width: 5px;display: inline-block;')
-                button.btn.btn-default(type='submit') 查询
+                button.btn.btn-default(type='button',onclick='query()') 查询
               ul.nav.navbar-nav.navbar-right
                 li
                   a.login_button(href='/signin') 登录 / 注册

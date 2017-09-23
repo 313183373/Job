@@ -8,22 +8,10 @@ function resolve(str) {
     return words;
 }
 
-
-//输出搜索结果
-function showJobs(rows) {
-    let jobList = [];//存查询到的记录
-    for (var i = 0, usr; usr = rows[i++];) {
-        url = '';
-        let job = new Job(usr.position, usr.workplace, usr.nature, usr.company, url);
-        jobList.push(job);
-    }
-    showHtml(jobList);//在页面中输出
-}
-
 //模糊搜索主程序
 function mohuSelect(str) {
     let words = resolve(str);
-    et url = `select * from jobs where (`;
+    let url = `select * from jobs where (`;
     for (let i = 0; i < words.length; i++) {
         url += `title like '${words[i]}' OR workplace like '${words[i]}' OR jobdesc like '${words[i]}'`;
         if (words[i + 1]) {
