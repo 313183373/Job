@@ -33,7 +33,6 @@ function mohuSelect(str) {
     url += ';';
     console.log(url);
     selectJobsBy(url);
-
 }
 
 //测试

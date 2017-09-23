@@ -6,6 +6,12 @@ block content
     link(rel='stylesheet', href='/stylesheets/bootstrap-datepicker3.css')
     //自定义
     link(rel='stylesheet', type='text/css', href='/stylesheets/postJob.css')
+    //markdown css
+    link(rel='stylesheet', type='text/css', href='/stylesheets/bootstrap-markdown.min.css')
+    //markdown js
+    script(src='/JavaScript/bootstrap-markdown.js', type='text/javascript')
+    //script(src='/markdown/lib/markdown.js', type='text/javascript')
+    script(src='/marked/lib/marked.js', type='text/javascript')
     script(src='/JavaScript/postJob.js', type='text/javascript')
     // 城市选择器支持包
     script(src='/JavaScript/Area.js', type='text/javascript')
@@ -19,18 +25,34 @@ block content
             initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '44', '0', '0');
             $('#postJobCategory').val($('#hide_position').text());
             $('#postJobType').val($('#hide_nature').text());
-            if($('#hide_china').text()==='1'){
+            if ($('#hide_china').text() === '1') {
                 $('#guonei').click();
-            }else{
+            } else {
                 $('#haiwai').click();
             }
+            $('#postJobDescription').markdown({width:490,
+                onPreview: function (e) {
+                    var previewContent
+                    var originalContent = e.getContent()
+                    previewContent = marked(originalContent,{breaks:true});
+                    return previewContent
+                }});
+            $('#postJobApply').markdown({width:490,
+                onPreview: function (e) {
+                    var previewContent
+                    var originalContent = e.getContent()
+                    previewContent = marked(originalContent, {breaks: true});
+                    return previewContent
+                }});
         });
 
         function post_job() {
             let title = $('#postJobTitle').val();
             let company = $('#postJobCompany').val();
-            let desc = $('#postJobDescription').val();
-            let apply = $('#postJobApply').val();
+            let desc = marked($('#postJobDescription').val(),{breaks:true});
+            let rawdesc = $('#postJobDescription').val();
+            let apply = marked($('#postJobApply').val(),{breaks:true});
+            let rawprop = $('#postJobApply').val();
             let deadline = $('#postJobDeadline').val();
             let category = $('#postJobCategory').val();
             let type = $('#postJobType').val();
@@ -116,7 +138,9 @@ block content
                     oCity,
                     prov,
                     city,
-                    street
+                    street,
+                    rawdesc,
+                    rawprop
                 },
                 function (result) {
                     result = JSON.parse(result);
@@ -132,8 +156,10 @@ block content
         function update_job() {
             let title = $('#postJobTitle').val();
             let company = $('#postJobCompany').val();
-            let desc = $('#postJobDescription').val();
-            let apply = $('#postJobApply').val();
+            let desc = marked($('#postJobDescription').val(),{breaks:true});
+            let rawdesc = $('#postJobDescription').val();
+            let rawprop = $('#postJobApply').val();
+            let apply = marked($('#postJobApply').val(),{breaks:true});
             let deadline = $('#postJobDeadline').val();
             let category = $('#postJobCategory').val();
             let type = $('#postJobType').val();
@@ -220,8 +246,10 @@ block content
                     prov,
                     city,
                     street,
-                    jid:$('#hide_jid').text(),
-                    publish:$('#hide_publish').text()
+                    jid: $('#hide_jid').text(),
+                    publish: $('#hide_publish').text(),
+                    rawprop,
+                    rawdesc,
                 },
                 function (result) {
                     if (result !== 'error') {
@@ -256,19 +284,19 @@ block content
                 b.need *
                 | 职位描述（支持Markdown）
                 small
-                    a(href='http://www.appinn.com/markdown/') Markdown语法说明请点击此处
+                    a(href='http://www.appinn.com/markdown/',target='_blank') Markdown语法说明请点击此处
             if job_info != 'null'
-                textarea#postJobDescription.line.form-control #{job_info.dataValues.jobdesc}
+                textarea#postJobDescription.form-control(style='background-color: white') #{job_info.dataValues.rawdesc}
             else
-                textarea#postJobDescription.line.form-control
+                textarea#postJobDescription.form-control(style='background-color: white')
         .howToApply
             p.line
                 b.need *
                 | 申请方式（支持Markdown）
             if job_info != 'null'
-                textarea#postJobApply.line.form-control #{job_info.dataValues.proposal}
+                textarea#postJobApply.line.form-control(style='background-color: white') #{job_info.dataValues.rawprop}
             else
-                textarea#postJobApply.line.form-control
+                textarea#postJobApply.line.form-control(style='background-color: white')
         .expiryDate
             p.line
                 b.need *

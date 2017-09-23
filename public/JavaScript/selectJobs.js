@@ -29,7 +29,6 @@ function selectJobsBy(url) {
     //2.查询
     connection.query(url, function (err, rows, fields) {
         if (err) throw err;
-
         console.log('selected！');
         showJobs(rows);//将查询到的记录在页面中展示
         console.log('\n');

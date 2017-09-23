@@ -9,6 +9,8 @@ block content
             job_email=$('#hide_email').val();
             publish=$('#hide_publish').val();
             jid=$('#hide_jid').val();
+            $('#jobDesc').html($('#hide_jobdesc').val());
+            $('#proposal').html($('#hide_jobprop').val());
             if(sessionStorage.useremail===job_email){
                 $('#change_info_button').show();
                 if(publish==='1'){
@@ -71,15 +73,18 @@ block content
         .panel.panel-default
             .panel-heading
                 h3.panel-title Description
-            .panel-body
-                | #{job_info.dataValues.jobdesc}
+            .panel-body#jobDesc
+
         .panel.panel-default
             .panel-heading
                 h3.panel-title How to apply
-            .panel-body
-                | #{job_info.dataValues.proposal}
+            .panel-body#proposal
+
+
         button#change_info_button.btn.btn-default(type='button',onclick='change_job_info()') 修改信息
         button#publish_button.btn.btn-default(type='button',onclick='publish_job()',style='margin-left:20px') 发布工作
-        input#hide_email(hidden,value=job_info.dataValues.userEid)
-        input#hide_publish(hidden,value=job_info.dataValues.publish)
-        input#hide_jid(hidden,value=job_info.dataValues.jid)
+        input#hide_email(hidden, value=job_info.dataValues.userEid)
+        input#hide_publish(hidden, value=job_info.dataValues.publish)
+        input#hide_jid(hidden, value=job_info.dataValues.jid)
+        input#hide_jobdesc(hidden, value=job_info.dataValues.jobdesc)
+        input#hide_jobprop(hidden, value=job_info.dataValues.proposal)
