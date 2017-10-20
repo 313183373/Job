@@ -4,9 +4,6 @@ block content
     link(rel='stylesheet',href='/stylesheets/signin.css')
     script(src='/JavaScript/signin.js')
     script(type='text/javascript').
-        $(function () {
-
-        });
         function form_submit() {
             let form = document.login_form;
             let password = form.password;
@@ -15,7 +12,7 @@ block content
                 alert('邮箱不能为空!');
                 return;
             }
-            if (!chk_email(email.value)) {
+            if (email.value!=='admin'&&!chk_email(email.value)) {
                 alert('邮箱格式错误!');
                 return;
             }
@@ -23,7 +20,7 @@ block content
                 alert('密码不能为空!');
                 return;
             }
-            if (!chk_password(password.value)) {
+            if (email.value!=='admin'&&!chk_password(password.value)) {
                 alert('密码不符合格式!');
                 return;
             }

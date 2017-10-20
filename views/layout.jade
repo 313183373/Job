@@ -2,14 +2,19 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    script(src='https://code.jquery.com/jquery-3.2.1.js', integrity='sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=', crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.2.1.js' , integrity='sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=', crossorigin='anonymous')
     link(rel='stylesheet', href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
     link(rel='stylesheet', href='/stylesheets/index.css')
-    script(src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+    script(src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js' , integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
     script(type='text/javascript').
       $(function() {
           if (sessionStorage.login&&sessionStorage.login!=='undefined') {
+              if(sessionStorage.useremail==='admin'){
+                  $('.back_end').show();
+              }else{
+                  $('.back_end').hide();
+              }
               $('.login_button').hide();
               $('.personal_button').show();
               $('.logout_button').show();
@@ -38,7 +43,7 @@ html
               }else{
                   alert('发生了神奇的错误!');
               }
-          })
+          });
       }
 
     title CODING GIRLS CLUB
@@ -65,13 +70,15 @@ html
                 button.btn.btn-default(type='button',onclick='query()') 查询
               ul.nav.navbar-nav.navbar-right
                 li
-                  a.login_button(href='/signin') 登录 / 注册
+                  a.back_end(href='/back_end', style='display:none') 后台
+                li
+                  a.login_button(href='/signin', style='display:none') 登录 / 注册
                 li
                   a.postjob_button(href='/post_job') 发布职位
                 li
-                  a.personal_button(href='/personal_info') 个人信息
+                  a.personal_button(href='/personal_info', style='display:none') 个人信息
                 li
-                  a.logout_button(onclick='logout()') 登出
+                  a.logout_button(onclick='logout()', style='display:none') 登出
   block content
 
   footer

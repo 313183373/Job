@@ -16,6 +16,7 @@ var forgetpw = require('./routes/forgetpw');
 var postJob = require('./routes/postJob');
 var personalInfo = require('./routes/personalInfo');
 var jobinfo = require('./routes/jobinfo');
+var back_end = require('./routes/back_end');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/forget_password',forgetpw);
 app.use('/post_job',postJob);
 app.use('/personal_info',personalInfo);
 app.use('/job_info',jobinfo);
+app.use('/back_end',back_end);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
