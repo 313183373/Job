@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html></html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Coding Girls Club Back End</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function logout() {
+            location.href='/';
+            sessionStorage.useremail=undefined;
+            sessionStorage.login=undefined;
+        }
+
+
+    </script>
+</head>
+<body class="sidebar-mini fixed">
+<div class="wrapper">
+    <!-- Navbar-->
+    <header class="main-header hidden-print">< a href=" " class="logo">Coding Girls Club</a>
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->< a href="#" data-toggle="offcanvas" class="sidebar-toggle"></a>
+            <!-- Navbar Right Menu-->
+            <div class="navbar-custom-menu">
+                <ul class="top-nav">
+
+                    <!-- User Menu-->
+                    <li class="dropdown">< a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user fa-lg"></i></ a>
+                    <ul class="dropdown-menu settings-menu">
+                        <li>< a href="page-user.html"><i class="fa fa-cog fa-lg"></i> 设置</ a></li>
+                        <li>< a href="javascript:logout()"><i class="fa fa-sign-out fa-lg"></i> 登出</ a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Side-Nav-->
+    <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+
+            <!-- Sidebar Menu-->
+            <ul class="sidebar-menu">
+                <li class="active">< a href="index.html"><i class="fa fa-dashboard"></i><span>&#x9996;&#x9875;</span></a></li>
+
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <div class="page-title">
+            <div>
+                <!-- <h1><i class="fa fa-dashboard"></i> 首页</h1>-->
+                <h1>&#x9996;&#x9875;</h1>
+                <!-- <p>A free and modular admin template</p >-->
+            </div>
+            <div>
+                <ul class="breadcrumb">
+                    <li><i class="fa fa-home fa-lg"></i></li>
+                    <li>< a href="">&#x9996;&#x9875;</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="col-md-10 row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">角色</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" ng-model="vm.rid">
+                                        <option ng-repeat="role in vm.roleList" ng-value="role.id"
+                                                ng-selected="vm.rid == role.id">{{role.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">用户名</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" ng-model="vm.list.name">
+                                </div>
+                            </div>
+                            <!--<label class="control-label">用户名</label>-->
+                            <!--<input type="text" class="form-control"  ng-model="vm.list.name">-->
+                        </div>
+                    </div>
+                    <div class="text-right col-sm-2 col-xs-12 pull-right">
+                        <button class="btn btn-primary pull-right" ng-click="vm.search()">搜索</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                用户列表
+                <button type="button" class="btn btn-sm btn-info pull-right margin-left-10" ui-sref="field.managerDetail">
+                    <i class="fa fa-plus"></i> 新增
+                </button>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive border">
+                    <table class="table table-striped text-center">
+                        <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">登录名</th>
+                            <th class="text-center">角色</th>
+                            <th class="text-center">密码</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="li in vm.list">
+                            <td>{{li.id}}</td>
+                            <td>{{li.name}}</td>
+                            <td>{{li.role.name}}</td>
+                            <td>{{li.password}}<br>{{li.updateAt|date:'HH:mm:ss'}}</td>
+                            <td>
+                                <button class="btn btn-xs btn-info" ui-sref="field.managerDetail({id:li.id})">
+                                    <i class="fa fa-edit"></i> 编辑
+                                </button>
+                                <button class="btn btn-xs btn-danger" ng-click="vm.delete(li.id)">
+                                    <i class="fa fa-remove"></i> 删除
+                                </button>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center text-warning">{{vm.warning}}</p>
+                <pagination total="{{vm.total}}"></pagination>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+</div>
+<!-- Javascripts-->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/javascript/pace.min.js"></script>
+<script src="/javascript/main.js"></script>
+</body>
