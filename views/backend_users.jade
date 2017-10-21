@@ -1,5 +1,9 @@
 extends backend_layout
 block content
+    script(type='text/javascript').
+        function searchUser() {
+
+        }
     .page-title
         div
             // <h1><i class="fa fa-dashboard"></i> 首页</h1>
@@ -13,55 +17,49 @@ block content
                     a(href='/back_end') 首页
                 li
                     a(href='/back_end/users') 用户管理
-    form.form-horizontal
-        fieldset
-            legend Legend
-            .form-group
-                label.col-lg-2.control-label(for='inputEmail') Email
-                .col-lg-10
-                    input#inputEmail.form-control(type='text', placeholder='Email')
-            .form-group
-                label.col-lg-2.control-label(for='inputPassword') Password
-                .col-lg-10
-                    input#inputPassword.form-control(type='password', placeholder='Password')
-                    .checkbox
-                        label
-                            input(type='checkbox')
-                            | Checkbox
-            .form-group
-                label.col-lg-2.control-label(for='textArea') Textarea
-                .col-lg-10
-                    textarea#textArea.form-control(rows='3')
-                    span.help-block
-                        | A longer block of help text that breaks onto a new line and may extend beyond one line.
-            .form-group
-                label.col-lg-2.control-label Radios
-                .col-lg-10
-                    .radio
-                        label
-                            input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
-                            | Option one is this
-                    .radio
-                        label
-                            input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
-                            | Option two can be something else
-            .form-group
-                label.col-lg-2.control-label(for='select') Selects
-                .col-lg-10
-                    select#select.form-control
-                        option 1
-                        option 2
-                        option 3
-                        option 4
-                        option 5
-                    br
-                    select.form-control(multiple='')
-                        option 1
-                        option 2
-                        option 3
-                        option 4
-                        option 5
-            .form-group
-                .col-lg-10.col-lg-offset-2
-                    button.btn.btn-default(type='reset') Cancel
-                    button.btn.btn-primary(type='submit') Submit
+    .panel.panel-default
+        .panel-body
+            form.form-horizontal
+                .search-bar
+                    .col-md-11.row
+                        .col-md-12
+                            .form-group
+                                .col-md-12
+                                    input.form-control(type='text')
+                            // <label class="control-label">用户名</label>
+                            // <input type="text" class="form-control"  ng-model="vm.list.name">
+                    .text-right.col-sm-2.col-xs-12.col-md-1
+                        button.btn.btn-primary(onclick='searchUser()') 搜索
+    .panel.panel-default
+        .panel-heading
+            | 用户列表
+            button.btn.btn-sm.btn-info.pull-right.margin-left-10(type='button', ui-sref='field.managerDetail')
+                i.fa.fa-plus
+                |  新增
+        .panel-body
+            .table-responsive.border
+                table.table.table-striped.text-center
+                    thead
+                        tr
+                            th.text-center ID/用户名
+                            th.text-center 密码
+                            th.text-center 公司名称
+                            th.text-center 公司地址
+                            th.text-center 公司所属行业
+                            th.text-center 操作
+                    tbody
+                        tr
+                            td
+                            td 2
+                            td 3
+                            td 4
+                            td 5
+                            td
+                                button.btn.btn-xs.btn-info()
+                                    i.fa.fa-edit
+                                    |  编辑
+                                button.btn.btn-xs.btn-danger()
+                                    i.fa.fa-remove
+                                    |  删除
+            p.text-center.text-warning 6
+            pagination(total='{{vm.total}}')

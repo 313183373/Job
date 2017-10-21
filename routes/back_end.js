@@ -4,23 +4,22 @@ let DB = require('../model/user.js');
 let User = DB.User;
 let Job = DB.Job;
 
+let user_list;
+let job_list;
 router.get('/', function (req, res) {
-    let user_list;
-    let job_list;
     (async () => {
         user_list = await User.findAll();
         job_list = await Job.findAll();
         res.render('backend',{user_list,job_list});
     })();
-
 });
 
 router.get('/users',function (req,res) {
-    res.render('backend_users');
+    res.render('backend_users',{user_list});
 });
 
 router.get('/jobs',function (req, res) {
-    res.render('backend_jobs');
+    res.render('backend_jobs',{job_list});
 });
 
 
