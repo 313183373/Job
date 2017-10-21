@@ -15,6 +15,15 @@ router.get('/', function (req, res) {
 
 });
 
+router.get('/users',function (req,res) {
+    res.render('backend_users');
+});
+
+router.get('/jobs',function (req, res) {
+    res.render('backend_jobs');
+});
+
+
 router.post('/get_user_number', function (req, res) {
     (async () => {
         let user_list = await User.findAll();
