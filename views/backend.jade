@@ -1,205 +1,93 @@
-doctype html
-html
-head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    // CSS
-    link(rel='stylesheet', type='text/css', href='/stylesheets/main.css')
-    // Font-icon css
-    link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
-    title Coding Girls Club Back End
-    script(src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js')
-    script(type="text/javascript").
-        function logout() {
-            location.href='/';
-            sessionStorage.useremail=undefined;
-            sessionStorage.login=undefined;
+extends backend_layout
+block content
+    script(type='text/javascript').
+        function user_on() {
+            $('.user_block').removeClass('coloured-icon');
         }
 
+        function user_off() {
+            $('.user_block').addClass('coloured-icon');
+        }
 
-body.sidebar-mini.fixed
-    .wrapper
-        // Navbar
-        header.main-header.hidden-print
-            a.logo(href='index.html') Coding Girls Club
-            nav.navbar.navbar-static-top
-                // Sidebar toggle button
-                a.sidebar-toggle(href='#', data-toggle='offcanvas')
-                // Navbar Right Menu
-                .navbar-custom-menu
-                    ul.top-nav
-                        // Notification Menu
-                        //
-                          <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
-                          <ul class="dropdown-menu">
-                          <li class="not-head">You have 4 new notifications.</li>
-                          <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                          <div class="media-body"><span class="block">Lisa sent you a mail</span><span class="text-muted block">2min ago</span></div></a></li>
-                          <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
-                          <div class="media-body"><span class="block">Server Not Working</span><span class="text-muted block">2min ago</span></div></a></li>
-                          <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
-                          <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block">2min ago</span></div></a></li>
-                          <li class="not-footer"><a href="#">See all notifications.</a></li>
-                          </ul>
-                          </li>
-                        // User Menu
-                        li.dropdown
-                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                                i.fa.fa-user.fa-lg
-                            ul.dropdown-menu.settings-menu
-                                li
-                                    a(href='page-user.html')
-                                        i.fa.fa-cog.fa-lg
-                                        |  设置
-                                // <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                                li
-                                    a(href='javascript:logout()')
-                                        i.fa.fa-sign-out.fa-lg
-                                        |  登出
-        // Side-Nav
-        aside.main-sidebar.hidden-print
-            section.sidebar
-                // 用户信息栏 可以去掉
-                //
-                  <div class="user-panel">
-                  <div class="pull-left image"><img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image"></div>
-                  <div class="pull-left info">
-                  <p>John Doe</p>
-                  <p class="designation">Frontend Developer</p>
-                  </div>
-                  </div>
-                // Sidebar Menu
-                ul.sidebar-menu
-                    li.active
-                        a(href='index.html')
-                            i.fa.fa-dashboard
-                            span &#x9996;&#x9875;
-                    //
-                      <li class="treeview"><a href="#"><i class="fa fa-laptop"></i><span>UI Elements</span><i class="fa fa-angle-right"></i></a>
-                      <ul class="treeview-menu">
-                      <li><a href="bootstrap-components.html"><i class="fa fa-circle-o"></i> Bootstrap Elements</a></li>
-                      <li><a href="http://fontawesome.io/icons/" target="_blank"><i class="fa fa-circle-o"></i> Font Icons</a></li>
-                      <li><a href="ui-cards.html"><i class="fa fa-circle-o"></i> Cards</a></li>
-                      <li><a href="widgets.html"><i class="fa fa-circle-o"></i> Widgets</a></li>
-                      </ul>
-                      </li>
-                      <li><a href="charts.html"><i class="fa fa-pie-chart"></i><span>Charts</span></a></li>
-                      <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Forms</span><i class="fa fa-angle-right"></i></a>
-                      <ul class="treeview-menu">
-                      <li><a href="form-components.html"><i class="fa fa-circle-o"></i> Form Components</a></li>
-                      <li><a href="form-custom.html"><i class="fa fa-circle-o"></i> Custom Components</a></li>
-                      <li><a href="form-samples.html"><i class="fa fa-circle-o"></i> Form Samples</a></li>
-                      <li><a href="form-notifications.html"><i class="fa fa-circle-o"></i> Form Notifications</a></li>
-                      </ul>
-                      </li>
-                      <li class="treeview"><a href="#"><i class="fa fa-th-list"></i><span>Tables</span><i class="fa fa-angle-right"></i></a>
-                      <ul class="treeview-menu">
-                      <li><a href="table-basic.html"><i class="fa fa-circle-o"></i> Basic Tables</a></li>
-                      <li><a href="table-data-table.html"><i class="fa fa-circle-o"></i> Data Tables</a></li>
-                      </ul>
-                      </li>
-                      <li class="treeview"><a href="#"><i class="fa fa-file-text"></i><span>Pages</span><i class="fa fa-angle-right"></i></a>
-                      <ul class="treeview-menu">
-                      <li><a href="blank-page.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                      <li><a href="page-login.html"><i class="fa fa-circle-o"></i> Login Page</a></li>
-                      <li><a href="page-lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen Page</a></li>
-                      <li><a href="page-user.html"><i class="fa fa-circle-o"></i> User Page</a></li>
-                      <li><a href="page-invoice.html"><i class="fa fa-circle-o"></i> Invoice Page</a></li>
-                      <li><a href="page-calendar.html"><i class="fa fa-circle-o"></i> Calendar Page</a></li>
-                      <li><a href="page-mailbox.html"><i class="fa fa-circle-o"></i> Mailbox</a></li>
-                      <li><a href="page-error.html"><i class="fa fa-circle-o"></i> Error Page</a></li>
-                      </ul>
-                      </li>
-                      <li class="treeview"><a href="#"><i class="fa fa-share"></i><span>Multilevel Menu</span><i class="fa fa-angle-right"></i></a>
-                      <ul class="treeview-menu">
-                      <li><a href="blank-page.html"><i class="fa fa-circle-o"></i> Level One</a></li>
-                      <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i><span> Level One</span><i class="fa fa-angle-right"></i></a>
-                      <ul class="treeview-menu">
-                      <li><a href="blank-page.html"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                      <li><a href="#"><i class="fa fa-circle-o"></i><span> Level Two</span></a></li>
-                      </ul>
-                      </li>
-                      </ul>
-                      </li>
-        .content-wrapper
-            .page-title
-                div
-                    // <h1><i class="fa fa-dashboard"></i> 首页</h1>
-                    h1 &#x9996;&#x9875;
-                    // <p>A free and modular admin template</p>
-                div
-                    ul.breadcrumb
-                        li
-                            i.fa.fa-home.fa-lg
-                        li
-                            a(href='') &#x9996;&#x9875;
-            .row
-                .col-md-6
-                    .widget-small.primary
-                        i.icon.fa.fa-users.fa-3x
-                        .info
-                            h4 用户
-                            p
-                                b.user_number #{user_list.length}
-                .col-md-3(style="display:none")
-                    .widget-small.info
-                        i.icon.fa.fa-thumbs-o-up.fa-3x
-                        .info
-                            h4 Likes
-                            p
-                                b 25
-                .col-md-6
-                    .widget-small.warning
-                        i.icon.fa.fa-files-o.fa-3x
-                        .info
-                            h4 工作
-                            p
-                                b.job_number #{job_list.length}
-                .col-md-3(style="display:none")
-                    .widget-small.danger
-                        i.icon.fa.fa-star.fa-3x
-                        .info
-                            h4 Stars
-                            p
-                                b 500
-            .row
-                .col-md-6
-                    .card
-                        h3.card-title Getting Started
-                        p
-                            | Vali is a free and responsive dashboard theme built with Bootstrap, Pug.js (templating) and SASS. It&apos;s fully customizable and modular. You don&apos;t need to add the code, you will not use.
-                        p
-                            | The issue with the most admin themes out there is that if you will see their source code there are a hell lot of external CSS and javascript files in there. And if you try to remove a CSS or Javascript file some things stops working.
-                        p
-                            | That&apos;s why I made Vali. Which is a light weight yet expendable and good looking theme. The theme has all the features required in a dashboard theme but this features are built like plug and play module. Take a look at the
-                            a(href='http://pratikborsadiya.in/blog/vali-admin', target='_blank') documentation
-                            |  about customizing the theme.
-                        p.mt-40.mb-20
-                            a.btn.btn-primary.icon-btn.mr-10(href='http://pratikborsadiya.in/blog/vali-admin', target='_blank')
-                                i.fa.fa-file
-                                | Docs
-                            a.btn.btn-info.icon-btn.mr-10(href='https://github.com/pratikborsadiya/vali-admin', target='_blank')
-                                i.fa.fa-github
-                                | GitHub
-                            a.btn.btn-success.icon-btn(href='https://github.com/pratikborsadiya/vali-admin/archive/master.zip', target='_blank')
-                                i.fa.fa-download
-                                | Download
-                .col-md-6
-                    .card
-                        h3.card-title Compatibility with frameworks
-                        p
-                            | This theme is not built for a specific framework or technology like Angular or React etc. But due to it&apos;s modular nature it&apos;s very easy to incorporate it into any front-end or back-end framework like Angular, React or Laravel.
-                        p
-                            | Go to
-                            a(href='http://pratikborsadiya.in/blog/vali-admin', target='_blank') documentation
-                            |  for more details about integrating this theme with various frameworks.
-                        p
-                            | The source code is available on GitHub. If anything is missing or weird please report it as an issue on
-                            a(href='https://github.com/pratikborsadiya/vali-admin', target='_blank') GitHub
-                            | . If you want to contribute to this theme pull requests are always welcome.
-    // Javascripts
-    script(src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" , integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
-    script(src='/javascript/pace.min.js')
-    script(src='/javascript/main.js')
+        function job_on() {
+            $('.job_block').removeClass('coloured-icon');
+        }
 
+        function job_off() {
+            $('.job_block').addClass('coloured-icon');
+        }
+    .page-title
+        div
+            // <h1><i class="fa fa-dashboard"></i> 首页</h1>
+            h1 &#x9996;&#x9875;
+            // <p>A free and modular admin template</p>
+        div
+            ul.breadcrumb
+                li
+                    i.fa.fa-home.fa-lg
+                li
+                    a(href='') &#x9996;&#x9875;
+    .row
+        .col-md-6
+            .widget-small.primary.user_block.coloured-icon(onclick="location.href='/back_end/users'", onmouseover="javascript:user_on()", onmouseout="javascript:user_off()")
+                i.icon.fa.fa-users.fa-3x
+                .info
+                    h4 用户
+                    p
+                        b.user_number #{user_list.length}
+        .col-md-3(style="display:none")
+            .widget-small.info.colored-icon
+                i.icon.fa.fa-thumbs-o-up.fa-3x
+                .info
+                    h4 Likes
+                    p
+                        b 25
+        .col-md-6
+            .widget-small.warning.job_block.coloured-icon(onclick="location.href='/back_end/jobs'", onmouseover="javascript:job_on()", onmouseout="javascript:job_off()")
+                i.icon.fa.fa-files-o.fa-3x
+                .info
+                    h4 工作
+                    p
+                        b.job_number #{job_list.length}
+        .col-md-3(style="display:none")
+            .widget-small.danger.colored-icon
+                i.icon.fa.fa-star.fa-3x
+                .info
+                    h4 Stars
+                    p
+                        b 500
+    .row
+        .col-md-6
+            .card
+                h3.card-title Getting Started
+                p
+                    | Vali is a free and responsive dashboard theme built with Bootstrap, Pug.js (templating) and SASS. It&apos;s fully customizable and modular. You don&apos;t need to add the code, you will not use.
+                p
+                    | The issue with the most admin themes out there is that if you will see their source code there are a hell lot of external CSS and javascript files in there. And if you try to remove a CSS or Javascript file some things stops working.
+                p
+                    | That&apos;s why I made Vali. Which is a light weight yet expendable and good looking theme. The theme has all the features required in a dashboard theme but this features are built like plug and play module. Take a look at the
+                    a(href='http://pratikborsadiya.in/blog/vali-admin', target='_blank') documentation
+                    |  about customizing the theme.
+                p.mt-40.mb-20
+                    a.btn.btn-primary.icon-btn.mr-10(href='http://pratikborsadiya.in/blog/vali-admin', target='_blank')
+                        i.fa.fa-file
+                        | Docs
+                    a.btn.btn-info.icon-btn.mr-10(href='https://github.com/pratikborsadiya/vali-admin', target='_blank')
+                        i.fa.fa-github
+                        | GitHub
+                    a.btn.btn-success.icon-btn(href='https://github.com/pratikborsadiya/vali-admin/archive/master.zip', target='_blank')
+                        i.fa.fa-download
+                        | Download
+        .col-md-6
+            .card
+                h3.card-title Compatibility with frameworks
+                p
+                    | This theme is not built for a specific framework or technology like Angular or React etc. But due to it&apos;s modular nature it&apos;s very easy to incorporate it into any front-end or back-end framework like Angular, React or Laravel.
+                p
+                    | Go to
+                    a(href='http://pratikborsadiya.in/blog/vali-admin', target='_blank') documentation
+                    |  for more details about integrating this theme with various frameworks.
+                p
+                    | The source code is available on GitHub. If anything is missing or weird please report it as an issue on
+                    a(href='https://github.com/pratikborsadiya/vali-admin', target='_blank') GitHub
+                    | . If you want to contribute to this theme pull requests are always welcome.
