@@ -1,8 +1,27 @@
 extends backend_layout
 block content
+    link(rel="stylesheet" href="/stylesheets/pagination.css")
+    script(src='/javascript/jquery.pagination.js')
     script(type='text/javascript').
         function searchUser() {
 
+        }
+
+        function edit(user) {
+
+        }
+
+        function del(user) {
+            if(confirm('确认删除用户'+user.eid)){
+                $.post('/personal_info/delete_user', {email:user.eid}, function (result) {
+                    if (result === 'ok') {
+                        alert('删除成功!');
+
+                    } else {
+                        alert('出现了神奇的错误!');
+                    }
+                });
+            }
         }
     .page-title
         div
@@ -38,7 +57,7 @@ block content
                 |  新增
         .panel-body
             .table-responsive.border
-                table.table.table-striped.text-center
+                table#user_table.table.table-striped.text-center
                     thead
                         tr
                             th.text-center ID/用户名
@@ -48,18 +67,21 @@ block content
                             th.text-center 公司所属行业
                             th.text-center 操作
                     tbody
-                        tr
-                            td
-                            td 2
-                            td 3
-                            td 4
-                            td 5
-                            td
-                                button.btn.btn-xs.btn-info()
-                                    i.fa.fa-edit
-                                    |  编辑
-                                button.btn.btn-xs.btn-danger()
-                                    i.fa.fa-remove
-                                    |  删除
-            p.text-center.text-warning 6
-            pagination(total='{{vm.total}}')
+                        each user, i in user_list
+                            if user.eid !== 'admin'
+                                tr
+                                    td #{user.eid}
+                                    td #{user.password}
+                                    td #{user.cname}
+                                    td #{user.cadd}
+                                    td #{user.cpro}
+                                    td
+                                        button.btn.btn-xs.btn-info(onclick="edit(#{JSON.stringify(user)})")
+                                            i.fa.fa-edit
+                                            |   编辑
+                                        button.btn.btn-xs.btn-danger(onclick="del(#{JSON.stringify(user)})")
+                                            i.fa.fa-remove
+                                            |   删除
+
+            //p.text-center.text-warning 6
+            //pagination(total='{{vm.total}}')
