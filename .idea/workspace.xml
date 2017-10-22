@@ -3,24 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9cf89888-a268-4624-8508-e213b92e42c5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/table_user.html" afterPath="$PROJECT_DIR$/bin/table_user.html" />
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/back_end.js" afterPath="$PROJECT_DIR$/routes/back_end.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/backend.jade" afterPath="$PROJECT_DIR$/views/backend.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/backend_layout.jade" afterPath="$PROJECT_DIR$/views/backend_layout.jade" />
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/backend_users.jade" afterPath="$PROJECT_DIR$/views/backend_users.jade" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
-    <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,35 +21,14 @@
       <file leaf-file-name="back_end.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/back_end.js">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="297">
               <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="437">
-              <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-=======
-            <state relative-caret-position="399">
-              <caret line="21" column="42" lean-forward="false" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file leaf-file-name="backend_layout.jade" pinned="false" current-in-tab="false">
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="www" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bin/www">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-=======
-      <file leaf-file-name="backend_layout.jade" pinned="false" current-in-tab="true">
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         <entry file="file://$PROJECT_DIR$/views/backend_layout.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1269">
@@ -71,55 +38,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="personalInfo.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/personalInfo.js">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="1037">
-              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-=======
-            <state relative-caret-position="1748">
-              <caret line="92" column="97" lean-forward="false" selection-start-line="92" selection-start-column="97" selection-end-line="92" selection-end-column="97" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
       <file leaf-file-name="backend_users.jade" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/backend_users.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="78" column="51" lean-forward="true" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
-=======
-<<<<<<< HEAD
-      <file leaf-file-name="table_user.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/table_user.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="126" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="126" />
-=======
-      <file leaf-file-name="backend_users.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/backend_users.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
+            <state relative-caret-position="34">
+              <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="form-custom.html" pinned="false" current-in-tab="false">
-        <entry file="file://D:/360Downloads/WeChat/WeChat Files/Syndrome9799/Files/vali-admin-master/vali-admin-master/dist/form-custom.html">
+      <file leaf-file-name="personalInfo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/personalInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2679">
-              <caret line="141" column="81" lean-forward="true" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="81" />
-=======
+            <state relative-caret-position="1037">
+              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="user-sql.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/mysqltxt/user-sql.txt">
           <provider selected="true" editor-type-id="text-editor">
@@ -155,28 +93,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-      <file leaf-file-name="signin.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/signin.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-223">
-              <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -185,7 +106,6 @@
         <option value="JavaScript File" />
         <option value="package_json" />
         <option value="Jade File" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -219,20 +139,9 @@
         <option value="$PROJECT_DIR$/views/package.json" />
         <option value="$PROJECT_DIR$/views/backend_jobs.jade" />
         <option value="$PROJECT_DIR$/routes/back_end.js" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/views/backend_layout.jade" />
         <option value="$PROJECT_DIR$/views/backend.jade" />
         <option value="$PROJECT_DIR$/views/backend_users.jade" />
-=======
-        <option value="$PROJECT_DIR$/views/backend_users.jade" />
-        <option value="$PROJECT_DIR$/views/backend.jade" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/bin/table_user.html" />
-        <option value="$PROJECT_DIR$/bin/try.html" />
-=======
-        <option value="$PROJECT_DIR$/views/backend_layout.jade" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
       </list>
     </option>
   </component>
@@ -259,11 +168,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="24" />
-    <option name="y" value="7" />
-    <option name="width" value="1378" />
-    <option name="height" value="780" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="823" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -281,6 +189,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -296,8 +205,6 @@
             <path>
               <item name="Job" type="b2602c69:ProjectViewProjectNode" />
               <item name="Job" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
-=======
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -326,14 +233,17 @@
             <path>
               <item name="Job" type="b2602c69:ProjectViewProjectNode" />
               <item name="Job" type="462c0819:PsiDirectoryNode" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
               <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Job" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -344,8 +254,6 @@
     <property name="javascript.nodejs.core.library.configured.version" value="8.5.0" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="last_opened_file_path" value="D:/360Downloads/WeChat/WeChat Files/Syndrome9799/Files/vali-admin-master/vali-admin-master/dist/form-custom.html" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -392,31 +300,13 @@
       <workItem from="1506130982322" duration="17298000" />
       <workItem from="1506163482498" duration="7560000" />
       <workItem from="1508470355258" duration="4830000" />
-<<<<<<< HEAD
-      <workItem from="1508488632095" duration="8491000" />
-      <workItem from="1508562148917" duration="3504000" />
-      <workItem from="1508632761098" duration="1987000" />
-      <workItem from="1508673100611" duration="186000" />
-=======
       <workItem from="1508488632095" duration="29940000" />
-<<<<<<< HEAD
       <workItem from="1508645486428" duration="7132000" />
-=======
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="93531000" />
-=======
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="69701000" />
-=======
-    <option name="totallyTimeSpent" value="85473000" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
+    <option name="totallyTimeSpent" value="92614000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -428,41 +318,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="56" y="-8" width="1318" height="784" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="823" extended-state="0" />
     <layout>
-<<<<<<< HEAD
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-=======
-<<<<<<< HEAD
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21538462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32615384" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-=======
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22708334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19840214" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21571238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21571238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19840214" sideWeight="0.49722221" order="8" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19840214" sideWeight="0.49722221" order="8" side_tool="false" content_ui="tabs" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19840214" sideWeight="0.49722221" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39946738" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -491,6 +360,13 @@
     <select />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/views/postJob.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/personalInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102">
@@ -517,6 +393,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
           <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -537,111 +414,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="274">
           <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-=======
-        <state relative-caret-position="437">
-          <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/table_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="126" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="126" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/360Downloads/WeChat/WeChat Files/Syndrome9799/Files/vali-admin-master/vali-admin-master/dist/form-custom.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2679">
-          <caret line="141" column="81" lean-forward="true" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1121">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1482">
-          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/back_end.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/signin.jade">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="-223">
           <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/mysqltxt/job-sql.txt">
-=======
-        <state relative-caret-position="513">
-          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/backend.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2983">
-          <caret line="157" column="47" lean-forward="true" selection-start-line="157" selection-start-column="47" selection-end-line="157" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -723,6 +509,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -744,6 +531,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -765,10 +553,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1444">
           <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
-<<<<<<< HEAD
           <folding />
-=======
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         </state>
       </provider>
     </entry>
@@ -777,13 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-910">
           <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-          <folding />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         </state>
       </provider>
     </entry>
@@ -791,16 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
-=======
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/personalInfo.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         </state>
       </provider>
     </entry>
@@ -808,20 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-425">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-          <folding />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/personalInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         </state>
       </provider>
     </entry>
@@ -829,17 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="57" column="18" lean-forward="false" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-<<<<<<< HEAD
-=======
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/postJob.js">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="608">
-          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         </state>
       </provider>
     </entry>
@@ -847,45 +590,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
           <caret line="51" column="6" lean-forward="false" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
-<<<<<<< HEAD
-=======
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/JavaScript/signin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-=======
-        <state relative-caret-position="508">
-          <caret line="51" column="6" lean-forward="false" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="339">
-          <caret line="187" column="0" lean-forward="true" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/signin.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1178">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-=======
         <state relative-caret-position="-107">
           <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
         </state>
@@ -910,6 +619,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -918,25 +628,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/routes/back_end.js">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="87">
-          <caret line="13" column="9" lean-forward="false" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-=======
-        <state relative-caret-position="399">
-          <caret line="21" column="42" lean-forward="false" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
     <entry file="file://$PROJECT_DIR$/public/mysqltxt/user-sql.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -972,6 +666,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -979,6 +674,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
           <caret line="80" column="18" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -995,71 +691,13 @@
         <state relative-caret-position="416">
           <caret line="181" column="15" lean-forward="true" selection-start-line="173" selection-start-column="12" selection-end-line="181" selection-end-column="15" />
           <folding />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/backend.jade">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="684">
           <caret line="36" column="59" lean-forward="false" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="947">
-          <caret line="197" column="29" lean-forward="false" selection-start-line="197" selection-start-column="29" selection-end-line="197" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/360Downloads/WeChat/WeChat Files/Syndrome9799/Files/vali-admin-master/vali-admin-master/dist/form-custom.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2679">
-          <caret line="141" column="81" lean-forward="true" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/table_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="126" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="126" />
-=======
-        <state relative-caret-position="1748">
-          <caret line="92" column="97" lean-forward="false" selection-start-line="92" selection-start-column="97" selection-end-line="92" selection-end-column="97" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/bin/try.html" />
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/views/backend_layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="1269">
-          <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-509">
-          <caret line="77" column="48" lean-forward="false" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1072,15 +710,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/backend_layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1269">
+          <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/backend_users.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="78" column="51" lean-forward="true" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
-=======
-        <state relative-caret-position="353">
-          <caret line="90" column="48" lean-forward="false" selection-start-line="90" selection-start-column="48" selection-end-line="90" selection-end-column="48" />
->>>>>>> 6d4a3eb324220b271c98f3340a982c5a0b21829d
->>>>>>> 7830befeb0eb89c1f58f52a0351575371d586eaa
+        <state relative-caret-position="34">
+          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
           <folding />
         </state>
       </provider>
