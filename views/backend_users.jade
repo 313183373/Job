@@ -1,8 +1,112 @@
 extends backend_layout
 block content
-    link(rel="stylesheet" href="/stylesheets/pagination.css")
-    script(src='/javascript/jquery.pagination.js')
     script(type='text/javascript').
+        let length;
+        let now;
+        let page_max;
+        let page_number;
+        let pre_now;
+        let page_avaliable;
+
+        $(function () {
+            length = $('#user_table tr').length - 1;
+            now = 1;
+            page_number = 5;
+            pre_now = -1;
+            page_max = Math.ceil(length / page_number);
+            page_avaliable = 5;
+            for (let i = 0; i < page_max; i++) {
+                $('ul.pagination').append(`<li> <a href="javascript:gopage(${i + 1})">${i + 1}</a> </li>`);
+            }
+            $('ul.pagination').append(`<li id="nexta"><a href="javascript:nextpage()">»</a></li>`);
+            showpage(now);
+            showpageindex();
+            checkpage();
+            changeActive();
+
+        });
+
+        function gopage(i) {
+            pre_now = now;
+            now = i;
+            showpage(now);
+            showpageindex();
+            checkpage();
+            changeActive();
+        }
+
+        function changeActive() {
+            $('ul.pagination li').eq(pre_now).removeClass('active');
+            $('ul.pagination li').eq(now).addClass('active');
+        }
+
+        function showpage(page) {
+            $('#user_table tr').each(function (value) {
+                if (value === 0 || (value > ((page - 1) * page_number) && value <= page * page_number)) {
+                    $('#user_table tr').eq(value).show();
+                } else {
+                    $('#user_table tr').eq(value).hide();
+                }
+            });
+        }
+
+        function showpageindex() {
+            let start;
+            if (page_max > page_avaliable) {
+                start = now - parseInt(page_avaliable / 2) > 0 ? now - parseInt(page_avaliable / 2) : 1;
+                if(start+page_avaliable>page_max){
+                    start=page_max+1-page_avaliable;
+                }
+            } else {
+                start = 1;
+            }
+            $('ul.pagination li').each(function (value) {
+                if (value === 0 || value === page_max + 1 || value >= start && value < start + page_avaliable) {
+                    $('ul.pagination li').eq(value).show();
+                } else {
+                    $('ul.pagination li').eq(value).hide();
+                }
+            })
+        }
+
+        function prevpage() {
+            if (now > 1) {
+                pre_now = now;
+                now--;
+                showpage(now);
+                showpageindex();
+                checkpage()
+                changeActive();
+            }
+        }
+
+        function nextpage() {
+            if (now < page_max) {
+                pre_now = now;
+                now++;
+                showpage(now);
+                showpageindex();
+                checkpage();
+                changeActive();
+            }
+        }
+
+        function checkpage() {
+            if (now === 1 && now !== page_max) {
+                $('#preva').addClass('disabled');
+                $('#nexta').removeClass('disabled');
+            } else if (now === page_max && now !== 1) {
+                $('#nexta').addClass('disabled');
+                $('#preva').removeClass('disabled');
+            } else if (now === page_max && now === 1) {
+                $('#nexta').addClass('disabled');
+                $('#preva').addClass('disabled');
+            } else {
+                $('#preva').removeClass('disabled');
+                $('#nexta').removeClass('disabled');
+            }
+        }
+
         function searchUser() {
 
         }
@@ -12,8 +116,8 @@ block content
         }
 
         function del(user) {
-            if(confirm('确认删除用户'+user.eid)){
-                $.post('/personal_info/delete_user', {email:user.eid}, function (result) {
+            if (confirm('确认删除用户' + user.eid)) {
+                $.post('/personal_info/delete_user', {email: user.eid}, function (result) {
                     if (result === 'ok') {
                         alert('删除成功!');
 
@@ -55,6 +159,7 @@ block content
             button.btn.btn-sm.btn-info.pull-right.margin-left-10(type='button', ui-sref='field.managerDetail')
                 i.fa.fa-plus
                 |  新增
+        div#Pagination.
         .panel-body
             .table-responsive.border
                 table#user_table.table.table-striped.text-center
@@ -86,6 +191,11 @@ block content
                                         button.btn.btn-xs.btn-danger(onclick="del(#{JSON.stringify(user)})")
                                             i.fa.fa-remove
                                             |   删除
-
+                .pag
+                    ul.pagination
+                        li#preva
+                            a(href='javascript:prevpage()') «
+                        //li#nexta
+                        //    a(href='javascript:nextpage()') »
             //p.text-center.text-warning 6
             //pagination(total='{{vm.total}}')

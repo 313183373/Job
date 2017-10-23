@@ -15,12 +15,17 @@ router.get('/', function (req, res) {
 });
 
 router.get('/users',function (req,res) {
-    res.render('backend_users',{user_list});
+    (async ()=>{
+        user_list = await User.findAll();
+        res.render('backend_users',{user_list});
+    })();
 });
 
 router.get('/jobs',function (req, res) {
-    res.render('backend_jobs',{job_list});
-});
+    (async ()=>{
+        job_list = await Job.findAll();
+        res.render('backend_jobs',{job_list});
+    })();});
 
 
 router.post('/get_user_number', function (req, res) {
