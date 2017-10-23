@@ -25,6 +25,7 @@
     "nodemailer": "^4.1.0",
     "npm": "^5.5.1",
     "sequelize": "^4.8.2",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "sweetalert": "^2.0.8"
   }
 }

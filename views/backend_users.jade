@@ -1,5 +1,6 @@
 extends backend_layout
 block content
+    script(src="/javascript/sweetalert.min.js")
     script(type='text/javascript').
         let length;
         let now;
@@ -23,7 +24,6 @@ block content
             showpageindex();
             checkpage();
             changeActive();
-
         });
 
         function gopage(i) {
@@ -54,8 +54,8 @@ block content
             let start;
             if (page_max > page_avaliable) {
                 start = now - parseInt(page_avaliable / 2) > 0 ? now - parseInt(page_avaliable / 2) : 1;
-                if(start+page_avaliable>page_max){
-                    start=page_max+1-page_avaliable;
+                if (start + page_avaliable > page_max) {
+                    start = page_max + 1 - page_avaliable;
                 }
             } else {
                 start = 1;
@@ -116,16 +116,30 @@ block content
         }
 
         function del(user) {
-            if (confirm('确认删除用户' + user.eid)) {
-                $.post('/personal_info/delete_user', {email: user.eid}, function (result) {
-                    if (result === 'ok') {
-                        alert('删除成功!');
-
-                    } else {
-                        alert('出现了神奇的错误!');
-                    }
-                });
-            }
+            swal({
+                title: `确定删除${user.eid}吗?`,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+            }).then(function (result) {
+                if (result) {
+                    $.post('/personal_info/delete_user', {email: user.eid}, function (result) {
+                        if (result === 'ok') {
+                            swal("删除成功!", {
+                                icon: "success",
+                            });
+                            $('#user_table tr').each(function (value) {
+                                if ($(`#user_table tr:eq(${value}) td:eq(1)`).text() === user.eid) {
+                                    $('#user_table tr').eq(value).remove();
+                                }
+                            });
+                            showpage(now);
+                        } else {
+                            swal("出现了神奇的错误!");
+                        }
+                    });
+                }
+            });
         }
     .page-title
         div
@@ -185,7 +199,7 @@ block content
                                     td #{user.cadd}
                                     td #{user.cpro}
                                     td
-                                        button.btn.btn-xs.btn-info(onclick="edit(#{JSON.stringify(user)})")
+                                        button.btn.btn-xs.btn-info(type="button" data-toggle="modal" data-target="#myModal")
                                             i.fa.fa-edit
                                             |   编辑
                                         button.btn.btn-xs.btn-danger(onclick="del(#{JSON.stringify(user)})")
