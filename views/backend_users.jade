@@ -249,10 +249,18 @@ block content
                                         button.btn.btn-xs.btn-danger(onclick="del(#{JSON.stringify(user)})")
                                             i.fa.fa-remove
                                             |   删除
-                .pag
-                    ul.pagination
-                        li#preva
-                            a(href='javascript:prevpage()') «
+                .pag.row
+                    .col-md-10
+                        ul.pagination
+                            li#preva
+                                a(href='javascript:prevpage()') «
+                    .text-right.col-md-2
+                        .col-md-6
+                            input.form-control(type='text')
+                        .col-md-6
+                            button.btn.btn-primary(onclick='') 开始
+
+
                         //li#nexta
                         //    a(href='javascript:nextpage()') »
             //p.text-center.text-warning 6
