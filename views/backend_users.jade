@@ -108,7 +108,35 @@ block content
         }
 
         function searchUser() {
+            let text=$('#searchText').val();
+            if(text===''){
+                location.href='/back_end/users';
+                return;
+            }
+            $.post('/back_end/searchUser',{text},function (result) {
+                if(result!=='error'){
+                    clearUserList();
+                    showUserList(result);
+                    //now=1;
+                    //showpage(now);
+                    //showpageindex();
+                    //checkpage();
+                    //changeActive();
+                }
+            });
+        }
 
+        //删除现有的用户列表
+        function clearUserList() {
+            $('#user_table tr:gt(0)').remove();
+        }
+        //根据参数添加用户列表
+        function showUserList(list) {
+            list=JSON.parse(list);
+            console.log(list);
+            for(let i=0;i<list.length;i++){
+                $('#user_table').append(`<tr><td><label><input type="checkbox" name="amount"></label></td><td>${list[i].eid}</td><td>${list[i].password}</td><td>${list[i].cname===null?'':list[i].cname}</td><td>${list[i].cadd===null?'':list[i].cadd}</td><td>${list[i].cpro===null?'':list[i].cpro}</td><td><button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>  编辑</button><button onclick=del(${JSON.stringify(list[i])}) class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>  删除</button></td></tr>`);
+            }
         }
 
         function edit(user) {
@@ -156,17 +184,16 @@ block content
                     a(href='/back_end/users') 用户管理
     .panel.panel-default
         .panel-body
-            form.form-horizontal
-                .search-bar
-                    .col-md-11.row
-                        .col-md-12
-                            .form-group
-                                .col-md-12
-                                    input.form-control(type='text')
-                            // <label class="control-label">用户名</label>
-                            // <input type="text" class="form-control"  ng-model="vm.list.name">
-                    .text-right.col-sm-2.col-xs-12.col-md-1
-                        button.btn.btn-primary(onclick='searchUser()') 搜索
+            .search-bar
+                .col-md-11.row
+                    .col-md-12
+                        .form-group
+                            .col-md-12
+                                input#searchText.form-control(type='text')
+                        // <label class="control-label">用户名</label>
+                        // <input type="text" class="form-control"  ng-model="vm.list.name">
+                .text-right.col-sm-1.col-xs-12.col-md-1
+                    button.btn.btn-primary(onclick='searchUser()') 搜索
     .panel.panel-default
         .panel-heading
             | 用户列表
