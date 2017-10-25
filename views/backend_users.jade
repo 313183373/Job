@@ -169,6 +169,21 @@ block content
                 }
             });
         }
+        var isCheckAll = false;
+        function swapCheck() {
+            if (isCheckAll) {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                isCheckAll = false;
+            } else {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = true;
+                });
+                isCheckAll = true;
+            }
+        }
+
     .page-title
         div
             // <h1><i class="fa fa-dashboard"></i> 首页</h1>
@@ -204,6 +219,8 @@ block content
                     thead
                         tr
                             th.text-center
+                                            label.
+                                            input(name="amount", type="checkbox", onclick="swapCheck()")
                             th.text-center ID/用户名
                             th.text-center 密码
                             th.text-center 公司名称
@@ -223,6 +240,9 @@ block content
                                     td #{user.cadd}
                                     td #{user.cpro}
                                     td
+                                        button.btn.btn-xs.btn-danger(onclick="")
+                                            i.fa.fa-ban
+                                            |   封禁
                                         button.btn.btn-xs.btn-info(type="button" data-toggle="modal" data-target="#myModal")
                                             i.fa.fa-edit
                                             |   编辑
