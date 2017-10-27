@@ -1,11 +1,31 @@
 extends backend_layout
 block content
     script(src='/javascript/select2.min.js')
+    script(src='/javascript/bootstrap-datepicker.min.js')
     script(type='text/javascript').
         $(function () {
+            $('.publishTime').datepicker({
+                language: 'zh-CN',
+                format: 'yyyy/mm/dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+            $('.expiryTime').datepicker({
+                language: 'zh-CN',
+                format: 'yyyy/mm/dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+
             $('#xzSelect').select2();
             $('#lxSelect').select2();
         });
+
+        function checkDisplay(dom) {
+            setTimeout(function () {
+                $('.datepicker-days').css({display:'block'});
+            },5);
+        }
     .page-title
         div
             // <h1><i class="fa fa-dashboard"></i> 首页</h1>
@@ -54,13 +74,13 @@ block content
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4 发布时间
-                            .col-md-8
-                                input.form-control
+                            .col-md-8.publishtime
+                                input.publishTime.form-control(type='text' placeholder='选择发布时间' readonly onclick="checkDisplay(this)")
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4 截止时间
-                            .col-md-8
-                                input.form-control
+                            .col-md-8.expirytime
+                                input.expiryTime.form-control(type='text' placeholder='选择截止时间' readonly onclick="checkDisplay()")
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4.word-spacing-25 工作性质
@@ -109,3 +129,7 @@ block content
                             button.btn.btn-xs.btn-danger()
                                 i.fa.fa-remove
                                 | 删除
+    .testTime.data.input-group
+        input(type='text')
+        .input-group-addon
+            span.glyphicon.glyphicon-th
