@@ -29,7 +29,7 @@ block content
                                 input.form-control()
                     .col-md-4
                         .form-group
-                            label.control-label.col-md-4 工作经验
+                            label.control-label.col-md-4 工作类型
                             .col-md-8
                                 select.form-control()
                                     option(value='') 全部
@@ -51,43 +51,7 @@ block content
                                 input.form-control(size='20', bs-datepicker='', autoclose='true', data-date-format='yyyy-MM-dd', data-date-type='number', ng-model='vm.searchParams.endAt', data-min-date='{{vm.searchParams.startAt}}', data-max-date='today')
                     .col-md-4
                         .form-group
-                            label.control-label.col-md-4 学历要求
-                            .col-md-8
-                                select.form-control()
-                                    option(value='') 全部
-                                    option(value='0') 大专
-                                    option(value='1') 本科
-                                    option(value='2') 硕士
-                                    option(value='3') 博士及以上
-                .row.pd-bottom-2
-                    .col-md-4
-                        .form-group
-                            label.control-label.col-md-4 职业类别
-                            .col-md-8
-                                select.form-control()
-                                    option(value='') 全部
-                                    option(value='0') 产品
-                                    option(value='1') 运营
-                                    option(value='2') 技术
-                                    option(value='3') 设计
-                                    option(value='4') 测试
-                    .col-md-4
-                        .form-group
-                            label.control-label.col-md-4 职业子类
-                            .col-md-8
-                                select.form-control()
-                                    option(value='') 全部
-                                    option(value='0') 产品经理
-                                    option(value='1') JAVA
-                                    option(value='2') IOS
-                                    option(value='3') Android
-                                    option(value='4') Web前端
-                                    option(value='5') 运维
-                                    option(value='6') UI设计
-                                    option(value='7') 功能测试
-                    .col-md-4
-                        .form-group
-                            label.control-label.col-md-4.word-spacing-25 薪 资
+                            label.control-label.col-md-4.word-spacing-25 工作性质
                             .col-md-8
                                 select.form-control()
                                     option(value='') 全部
@@ -95,56 +59,40 @@ block content
                                     option(value='1') 8k~15k
                                     option(value='2') 16k~25k
                                     option(value='3') 25k以上
-                .row.pd-bottom-2
-                    .col-md-4
-                        .form-group
-                            label.control-label.col-md-4.word-spacing-25 状 态
-                            .col-md-8
-                                select.form-control()
-                                    option(value='') 全部
-                                    option(value='1') 上架
-                                    option(value='0') 下架
-                .row.pd-bottom-2
-                    .col-md-4.pull-right.text-right
-                        search(params='vm.searchParams')
+                        .pull-right
+                            button.btn.btn-primary(onclick='searchUser()') 搜索
+
     .panel.panel-default
         .panel-heading
             strong() 职位列表
-            strong() {{vm.searchParams.companyName}}的在招职位
-            button.btn.btn-xs.btn-danger.pull-right()
+            button.btn.btn-xs.btn-primary.pull-right()
                 i.fa.fa-plus
                 | 新增
         .panel-body.table-responsive
             table.table.table-striped.add-table-border
                 thead
                     tr
-                        th 在招公司
-                        th 职位名称
-                        th 职业标签
-                        th 薪资
-                        th 学历要求
-                        th 工作经验
-                        th 发布时间
-                        th 状态
-                        th 操作
+                        th.text-center 招聘序号
+                        th.text-center 在招公司
+                        th.text-center 职位名称
+                        th.text-center 工作类型
+                        th.text-center 工作性质
+                        th.text-center 发布时间
+                        th.text-center 工作标签
+                        th.text-center 操作
                 tbody
                     tr()
-                        td 1
-                        td 2
-                        td 3
-                        td 4
-                        td 5
-                        td 6
-                        td 7
-                        td 8
-                        td
-                            button.btn.btn-xs.btn-warning()
-                                | 按钮1
+                        td.text-center 1
+                        td.text-center 2
+                        td.text-center 3
+                        td.text-center 4
+                        td.text-center 5
+                        td.text-center 6
+                        td.text-center 7
+                        td.text-center
                             button.btn.btn-xs.btn-info()
                                 i.fa.fa-edit
                                 |  编辑
                             button.btn.btn-xs.btn-danger()
                                 i.fa.fa-remove
                                 | 删除
-            p.text-center.text-warning 警告
-            //pagination(, total='{{vm.total}}')
