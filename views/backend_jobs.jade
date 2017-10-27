@@ -1,5 +1,11 @@
 extends backend_layout
 block content
+    script(src='/javascript/select2.min.js')
+    script(type='text/javascript').
+        $(function () {
+            $('#xzSelect').select2();
+            $('#lxSelect').select2();
+        });
     .page-title
         div
             // <h1><i class="fa fa-dashboard"></i> 首页</h1>
@@ -31,34 +37,41 @@ block content
                         .form-group
                             label.control-label.col-md-4 工作类型
                             .col-md-8
-                                select.form-control()
-                                    option(value='') 全部
-                                    option(value='0') 应届
-                                    option(value='1') 1~2年
-                                    option(value='2') 3~5年
-                                    option(value='3') 6~9年
-                                    option(value='4') 10年及以上
+                                select#lxSelect.form-control()
+                                    optgroup(label='选择工作类型')
+                                        option(value='') 全部
+                                        option(value='0') 研发
+                                        option(value='1') 教育
+                                        option(value='2') 市场营销
+                                        option(value='3') 产品经理
+                                        option(value='4') 客户经理
+                                        option(value='5') 业务发展(BD)
+                                        option(value='6') 售前服务
+                                        option(value='7') 通信
+                                        option(value='8') 售后服务
+                                        option(value='9') 设计
                 .row.pd-bottom-2
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4 发布时间
                             .col-md-8
-                                input.form-control(size='20', bs-datepicker='', autoclose='true', data-date-format='yyyy-MM-dd', data-date-type='number', ng-model='vm.searchParams.startAt')
+                                input.form-control
                     .col-md-4
                         .form-group
-                            label.control-label.col-md-4       —
+                            label.control-label.col-md-4 截止时间
                             .col-md-8
-                                input.form-control(size='20', bs-datepicker='', autoclose='true', data-date-format='yyyy-MM-dd', data-date-type='number', ng-model='vm.searchParams.endAt', data-min-date='{{vm.searchParams.startAt}}', data-max-date='today')
+                                input.form-control
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4.word-spacing-25 工作性质
                             .col-md-8
-                                select.form-control()
-                                    option(value='') 全部
-                                    option(value='0') 8k以下
-                                    option(value='1') 8k~15k
-                                    option(value='2') 16k~25k
-                                    option(value='3') 25k以上
+                                select#xzSelect.form-control
+                                    optgroup(label='选择工作性质')
+                                        option(value='') 全部
+                                        option(value='0') 志愿
+                                        option(value='1') 全职
+                                        option(value='2') 兼职
+                                        option(value='3') 合同
                         .pull-right
                             button.btn.btn-primary(onclick='searchUser()') 搜索
 
