@@ -1,7 +1,12 @@
 extends backend_layout
 block content
+    style(type='text/css').
+        .datepicker-days {
+            display: block !important;
+        }
     script(src='/javascript/select2.min.js')
     script(src='/javascript/bootstrap-datepicker.min.js')
+    script(src='/javascript/bootstrap-datepicker.zh-CN.min.js')
     script(type='text/javascript').
         $(function () {
             $('.publishTime').datepicker({
@@ -21,10 +26,23 @@ block content
             $('#lxSelect').select2();
         });
 
+
+        // 这是那个bootstrap-datepicker的出问题的注释
+        // 就是可以看到我在上面的css里面加了一个东西，datepicker-days的display被我强制设定为了
+        // block,你可以把这个样式给删掉(只用把!important删掉)，然后再到页面上看看效果，
+        // 具体就是：
+        // 点击那两个日期框的时候，会出现一个小的横条
+        // 但是没有东西，同时直接看网页的代码变化，会发现下面的多出来了一个div
+        // 这个就是那个日期选择的东西，但是没有出来
+        // 点开div发现里面有很多个小的div，问题就出在那个datepicker-days的div
+        // 它的style属性是空的，正确的应该是block,（这个是看那个Vali Admin(我们的网站模版)发现的）
+        // 所以我就在css里面添加了这么一项，但是这个方法也有问题，我加了!important,那么它的内联样式的优先级是没有这个高的
+        // 所以会导致选择日期或者年的时候，会在下方多一个选择界面出来。然后就是你的任务啦，找到如何解决这个问题，尽可能地不要用我的这种添加css方法，可能会出一些奇怪的错误
+        //
         function checkDisplay(dom) {
-            setTimeout(function () {
-                $('.datepicker-days').css({display:'block'});
-            },5);
+            //setTimeout(function () {
+            //    $('.datepicker-days').css({display:'none'});
+            //},0);
         }
     .page-title
         div
@@ -129,7 +147,3 @@ block content
                             button.btn.btn-xs.btn-danger()
                                 i.fa.fa-remove
                                 | 删除
-    .testTime.data.input-group
-        input(type='text')
-        .input-group-addon
-            span.glyphicon.glyphicon-th
