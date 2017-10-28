@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let mysql =require('mysql');
+let mysql = require('mysql');
 let DB = require('../model/user.js');
 let User = DB.User;
 let Job = DB.Job;
@@ -11,22 +11,23 @@ router.get('/', function (req, res) {
     (async () => {
         user_list = await User.findAll();
         job_list = await Job.findAll();
-        res.render('backend',{user_list,job_list});
+        res.render('backend', {user_list, job_list});
     })();
 });
 
-router.get('/users',function (req,res) {
-    (async ()=>{
+router.get('/users', function (req, res) {
+    (async () => {
         user_list = await User.findAll();
-        res.render('backend_users',{user_list});
+        res.render('backend_users', {user_list});
     })();
 });
 
-router.get('/jobs',function (req, res) {
-    (async ()=>{
+router.get('/jobs', function (req, res) {
+    (async () => {
         job_list = await Job.findAll();
-        res.render('backend_jobs',{job_list});
-    })();});
+        res.render('backend_jobs', {job_list});
+    })();
+});
 
 
 router.post('/get_user_number', function (req, res) {
@@ -37,11 +38,11 @@ router.post('/get_user_number', function (req, res) {
     })();
 });
 
-router.post('/searchUser',function (req, res) {
-    (async ()=>{
-        let text=req.body.text;
-        let words=resolve(text);
-        let url='select * from users where (';
+router.post('/searchUser', function (req, res) {
+    (async () => {
+        let text = req.body.text;
+        let words = resolve(text);
+        let url = 'select * from users where (';
         for (let i = 0; i < words.length; i++) {
             url += `eid like '${words[i]}' OR password like '${words[i]}' OR cname like '${words[i]}' OR cpro like '${words[i]}' OR cadd like '${words[i]}'`;
             if (words[i + 1]) {
@@ -83,8 +84,33 @@ router.post('/searchUser',function (req, res) {
 
 function resolve(str) {
     let words = str.trim().split(/\s/);
-    words = words.filter(function (word) { return word !== '' });
-    words = words.map(function (word) { return word = `%${word}%` });
+    words = words.filter(function (word) {
+        return word !== ''
+    });
+    words = words.map(function (word) {
+        return word = `%${word}%`
+    });
     return words;
 }
+
+router.post('/deleteSeletedUser', function (req, res) {
+    let list = JSON.parse(req.body.dlist);
+    (async () => {
+        let result = await User.destroy({
+            where:{
+                eid:{
+                    $in:list
+                }
+            }
+        });
+        console.log(result);
+        if(result) {
+            res.end('ok');
+        }else{
+            res.end('error');
+        }
+    })();
+});
+
+
 module.exports = router;

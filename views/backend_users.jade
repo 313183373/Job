@@ -16,15 +16,23 @@ block content
             pre_now = -1;
             page_max = Math.ceil(length / page_number);
             page_avaliable = 5;
-            for (let i = 0; i < page_max; i++) {
-                $('ul.pagination').append(`<li> <a href="javascript:gopage(${i + 1})">${i + 1}</a> </li>`);
-            }
-            $('ul.pagination').append(`<li id="nexta"><a href="javascript:nextpage()">»</a></li>`);
+            updatePageIndex();
             showpage(now);
             showpageindex();
             checkpage();
             changeActive();
         });
+
+        function deletePageIndex(){
+            $('.pagination li:gt(0)').remove();
+        }
+
+        function updatePageIndex(){
+            for (let i = 0; i < page_max; i++) {
+                $('ul.pagination').append(`<li> <a href="javascript:gopage(${i + 1})">${i + 1}</a> </li>`);
+            }
+            $('ul.pagination').append(`<li id="nexta"><a href="javascript:nextpage()">»</a></li>`);
+        }
 
         function gopage(i) {
             pre_now = now;
@@ -161,9 +169,11 @@ block content
                                     $('#user_table tr').eq(value).remove();
                                 }
                             });
-                            showpage(now);
                             length--;
                             page_max = Math.ceil(length / page_number);
+                            showpage(now);
+                            deletePageIndex();
+                            updatePageIndex();
                         } else {
                             swal("出现了神奇的错误!");
                         }
@@ -173,7 +183,7 @@ block content
         }
         let isCheckAll = false;
         let selectedBox;
-        let deleteList = [];
+        let deleteList =new Array();
         function swapCheck() {
             if (isCheckAll) {
                 $("input[type='checkbox']").each(function () {
@@ -243,19 +253,22 @@ block content
                 dangerMode: true
             }).then(function (result) {
                 if (result) {
-                    $.post('/personal_info/delete_user', {email: user.eid}, function (result) {
+                    $.post('/back_end/deleteSeletedUser',{dlist:JSON.stringify(deleteList)}, function (result) {
                         if (result === 'ok') {
                             swal("删除成功!", {
-                                icon: "success",
+                                icon: "success"
                             });
-                            $('#user_table tr').each(function (value) {
-                                if ($(`#user_table tr:eq(${value}) td:eq(1)`).text() === user.eid) {
-                                    $('#user_table tr').eq(value).remove();
+                            $('#user_table tr:gt(0)').each(function (value) {
+                                console.log($(this).text());
+                                if (deleteList.includes($(this).children().eq(1).text())) {
+                                    $(this).remove();
                                 }
                             });
-                            showpage(now);
-                            length--;
+                            length-=deleteList.length;
                             page_max = Math.ceil(length / page_number);
+                            showpage(now);
+                            deletePageIndex();
+                            updatePageIndex()
                         } else {
                             swal("出现了神奇的错误!");
                         }
