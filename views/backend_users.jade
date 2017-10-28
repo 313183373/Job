@@ -108,20 +108,20 @@ block content
         }
 
         function searchUser() {
-            let text=$('#searchText').val();
-            if(text===''){
-                location.href='/back_end/users';
+            let text = $('#searchText').val();
+            if (text === '') {
+                location.href = '/back_end/users';
                 return;
             }
-            $.post('/back_end/searchUser',{text},function (result) {
-                if(result!=='error'){
+            $.post('/back_end/searchUser', {text}, function (result) {
+                if (result !== 'error') {
                     clearUserList();
                     showUserList(result);
-                    //now=1;
-                    //showpage(now);
-                    //showpageindex();
-                    //checkpage();
-                    //changeActive();
+                    now = 1;
+                    showpage(now);
+                    showpageindex();
+                    checkpage();
+                    changeActive();
                 }
             });
         }
@@ -132,10 +132,10 @@ block content
         }
         //根据参数添加用户列表
         function showUserList(list) {
-            list=JSON.parse(list);
+            list = JSON.parse(list);
             console.log(list);
-            for(let i=0;i<list.length;i++){
-                $('#user_table').append(`<tr><td><label><input type="checkbox" name="amount"></label></td><td>${list[i].eid}</td><td>${list[i].password}</td><td>${list[i].cname===null?'':list[i].cname}</td><td>${list[i].cadd===null?'':list[i].cadd}</td><td>${list[i].cpro===null?'':list[i].cpro}</td><td><button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>  编辑</button><button onclick=del(${JSON.stringify(list[i])}) class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>  删除</button></td></tr>`);
+            for (let i = 0; i < list.length; i++) {
+                $('#user_table').append(`<tr><td><label><input type="checkbox" name="amount"></label></td><td>${list[i].eid}</td><td>${list[i].password}</td><td>${list[i].cname === null ? '' : list[i].cname}</td><td>${list[i].cadd === null ? '' : list[i].cadd}</td><td>${list[i].cpro === null ? '' : list[i].cpro}</td><td><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-ban"></i>  删除</button><button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>  编辑</button><button onclick=del(${JSON.stringify(list[i])}) class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>  删除</button></td></tr>`);
             }
         }
 
@@ -162,6 +162,8 @@ block content
                                 }
                             });
                             showpage(now);
+                            length--;
+                            page_max = Math.ceil(length / page_number);
                         } else {
                             swal("出现了神奇的错误!");
                         }
@@ -169,21 +171,106 @@ block content
                 }
             });
         }
-        var isCheckAll = false;
+        let isCheckAll = false;
+        let selectedBox;
+        let deleteList = [];
         function swapCheck() {
             if (isCheckAll) {
                 $("input[type='checkbox']").each(function () {
                     this.checked = false;
                 });
                 isCheckAll = false;
+                selectedBox = 0;
             } else {
                 $("input[type='checkbox']").each(function () {
                     this.checked = true;
                 });
                 isCheckAll = true;
+                selectedBox = length;
+            }
+            checkDisable();
+        }
+
+        function jumppage() {
+            let page = $('#pagenumber').val();
+            if (page && page >= 1 && page <= page_max) {
+                gopage(page);
+                $('#pageerror').removeClass('has-error');
+            } else {
+                $('#pageerror').addClass('has-error');
             }
         }
 
+        function checkSelectAll() {
+            selectedBox = 0;
+            $('#user_table :input[name=amount]:gt(0)').each(function (cnt) {
+                if (this.checked) {
+                    selectedBox++;
+                }
+            });
+            if (selectedBox === length) {
+                $('.selectAll').click();
+            } else {
+                $('.selectAll').prop('checked', false);
+                isCheckAll = false;
+            }
+            checkDisable();
+        }
+
+        function checkDisable() {
+            if (selectedBox > 0) {
+                $('.banbutton').prop('disabled', false);
+                $('.deletebutton').prop('disabled', false);
+            } else {
+                $('.banbutton').prop('disabled', true);
+                $('.deletebutton').prop('disabled', true);
+            }
+        }
+
+        function delSelected() {
+            deleteList=[];
+            $('#user_table tr:gt(0)').each(function (cnt) {
+                if ($(this).children().eq(0).children().children().prop('checked')) {
+                    deleteList.push($(this).children().eq(1).text());
+                }
+            });
+            let str=deleteList.join(',\n ');
+            swal({
+                title: `确定删除这些用户吗?`,
+                text: str,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true
+            }).then(function (result) {
+                if (result) {
+                    $.post('/personal_info/delete_user', {email: user.eid}, function (result) {
+                        if (result === 'ok') {
+                            swal("删除成功!", {
+                                icon: "success",
+                            });
+                            $('#user_table tr').each(function (value) {
+                                if ($(`#user_table tr:eq(${value}) td:eq(1)`).text() === user.eid) {
+                                    $('#user_table tr').eq(value).remove();
+                                }
+                            });
+                            showpage(now);
+                            length--;
+                            page_max = Math.ceil(length / page_number);
+                        } else {
+                            swal("出现了神奇的错误!");
+                        }
+                    });
+                }
+            });
+        }
+
+        function banSelected() {
+
+        }
+
+        function ban(user) {
+
+        }
     .page-title
         div
             // <h1><i class="fa fa-dashboard"></i> 首页</h1>
@@ -211,7 +298,22 @@ block content
                     button.btn.btn-primary(onclick='searchUser()') 搜索
     .panel.panel-default
         .panel-heading
-            | 用户列表
+            .row
+                .col-md-6 用户列表
+                .col-md-6.text-right
+                    button.banbutton.btn.btn-sm.btn-danger(onclick="banSelected()" disabled)
+                        i.fa.fa-ban
+                        |   封禁
+                    button.deletebutton.btn.btn-sm.btn-danger(style="margin-left:10px" onclick="delSelected(#{JSON.stringify(user)})" disabled)
+                        i.fa.fa-remove
+                        |   删除
+            //.text-right.col-md-6
+                button.btn.btn-xs.btn-danger(onclick="banSelected()")
+                    i.fa.fa-ban
+                    |   封禁
+                button.btn.btn-xs.btn-danger(onclick="delSelected(#{JSON.stringify(user)})")
+                    i.fa.fa-remove
+                    |   删除
         div#Pagination.
         .panel-body
             .table-responsive.border
@@ -219,8 +321,7 @@ block content
                     thead
                         tr
                             th.text-center
-                                            label.
-                                            input(name="amount", type="checkbox", onclick="swapCheck()")
+                                input.selectAll(name="amount", type="checkbox", onclick="swapCheck()")
                             th.text-center ID/用户名
                             th.text-center 密码
                             th.text-center 公司名称
@@ -232,8 +333,8 @@ block content
                             if user.eid !== 'admin'
                                 tr
                                     td
-                                        label.
-                                        input(name="amount", type="checkbox")
+                                        label
+                                            input(name="amount", type="checkbox", onclick='checkSelectAll()')
                                     td #{user.eid}
                                     td #{user.password}
                                     td #{user.cname}
@@ -254,11 +355,11 @@ block content
                         ul.pagination
                             li#preva
                                 a(href='javascript:prevpage()') «
-                    .text-right.col-md-2
+                    .text-right.col-md-2(style='margin-top:23px')
+                        #pageerror.col-md-6
+                            input#pagenumber.form-control(type='text')
                         .col-md-6
-                            input.form-control(type='text')
-                        .col-md-6
-                            button.btn.btn-primary(onclick='') 开始
+                            button.btn.btn-primary(onclick='jumppage()') 跳转
 
 
                         //li#nexta
