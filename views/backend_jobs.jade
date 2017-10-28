@@ -39,11 +39,6 @@ block content
         // 所以我就在css里面添加了这么一项，但是这个方法也有问题，我加了!important,那么它的内联样式的优先级是没有这个高的
         // 所以会导致选择日期或者年的时候，会在下方多一个选择界面出来。然后就是你的任务啦，找到如何解决这个问题，尽可能地不要用我的这种添加css方法，可能会出一些奇怪的错误
         //
-        function checkDisplay(dom) {
-            //setTimeout(function () {
-            //    $('.datepicker-days').css({display:'none'});
-            //},0);
-        }
     .page-title
         div
             // <h1><i class="fa fa-dashboard"></i> 首页</h1>
@@ -123,27 +118,28 @@ block content
             table.table.table-striped.add-table-border
                 thead
                     tr
-                          th.text-center 招聘序号
+                        th.text-center 招聘序号
                         th.text-center 在招公司
                         th.text-center 职位名称
                         th.text-center 工作类型
                         th.text-center 工作性质
-                        th.text-center 发布时间
+                        th.text-center 截止时间
                         th.text-center 工作标签
                         th.text-center 操作
                 tbody
-                    tr()
-                        td.text-center 1
-                        td.text-center 2
-                        td.text-center 3
-                        td.text-center 4
-                        td.text-center 5
-                        td.text-center 6
-                        td.text-center 7
-                        td.text-center
-                            button.btn.btn-xs.btn-info()
-                                i.fa.fa-edit
-                                |  编辑
-                            button.btn.btn-xs.btn-danger()
-                                i.fa.fa-remove
-                                | 删除
+                    for item in job_list
+                        tr
+                            td.text-center #{item.jid}
+                            td.text-center #{item.company}
+                            td.text-center #{item.title}
+                            td.text-center #{item.position}
+                            td.text-center #{item.nature}
+                            td.text-center #{item.deadline}
+                            td.text-center #{item.tags}
+                            td.text-center
+                                button.btn.btn-xs.btn-info()
+                                    i.fa.fa-edit
+                                    |  编辑
+                                button.btn.btn-xs.btn-danger()
+                                    i.fa.fa-remove
+                                    | 删除
