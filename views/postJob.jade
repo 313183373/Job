@@ -59,6 +59,7 @@ block content
             let tags = $('#postJobTags').val();
             let radio1 = $(':radio')[0];
             let radio2 = $(':radio')[1];
+            deadline = deadline.split(/[年,月,日]/).slice(0,3).join('-');
             if (!title) {
                 alert('请输入工作标题!');
                 $('#postJobTitle').focus();
@@ -166,6 +167,8 @@ block content
             let tags = $('#postJobTags').val();
             let radio1 = $(':radio')[0];
             let radio2 = $(':radio')[1];
+            deadline = deadline.split(/[年,月,日]/).slice(0,3).join('-');
+            console.log(deadline);
             if (!title) {
                 alert('请输入工作标题!');
                 $('#postJobTitle').focus();

@@ -1,5 +1,6 @@
 extends backend_layout
 block content
+    script(src="/javascript/sweetalert.min.js")
     style(type='text/css').
         .datepicker-days {
             display: block !important;
@@ -8,6 +9,15 @@ block content
     script(src='/javascript/bootstrap-datepicker.min.js')
     script(src='/javascript/bootstrap-datepicker.zh-CN.min.js')
     script(type='text/javascript').
+        const lxlist = ['研发', '教育', '市场营销', '产品经理', '客户经理', '业务发展(BD)', '售前服务', '通信', '售后服务', '设计'];
+        const xzlist = ['志愿', '全职', '兼职', '合同'];
+        let length;
+        let now;
+        let page_max;
+        let page_number;
+        let pre_now;
+        let page_avaliable;
+
         $(function () {
             $('.publishTime').datepicker({
                 language: 'zh-CN',
@@ -24,7 +34,340 @@ block content
 
             $('#xzSelect').select2();
             $('#lxSelect').select2();
+
+            length = $('#job_table tr').length - 1;
+            now = 1;
+            page_number = 5;
+            pre_now = -1;
+            page_max = Math.ceil(length / page_number);
+            page_avaliable = 5;
+            updatePageIndex();
+            showpage(now);
+            showpageindex();
+            checkpage();
+            changeActive();
         });
+
+        function deletePageIndex() {
+            $('.pagination li:gt(0)').remove();
+        }
+
+        function updatePageIndex() {
+            for (let i = 0; i < page_max; i++) {
+                $('ul.pagination').append(`<li> <a href="javascript:gopage(${i + 1})">${i + 1}</a> </li>`);
+            }
+            $('ul.pagination').append(`<li id="nexta"><a href="javascript:nextpage()">»</a></li>`);
+        }
+
+        function gopage(i) {
+            pre_now = now;
+            now = i;
+            showpage(now);
+            showpageindex();
+            checkpage();
+            changeActive();
+        }
+
+        function changeActive() {
+            $('ul.pagination li').eq(pre_now).removeClass('active');
+            $('ul.pagination li').eq(now).addClass('active');
+        }
+
+        function showpage(page) {
+            $('#job_table tr').each(function (value) {
+                if (value === 0 || (value > ((page - 1) * page_number) && value <= page * page_number)) {
+                    $('#job_table tr').eq(value).show();
+                } else {
+                    $('#job_table tr').eq(value).hide();
+                }
+            });
+        }
+
+        function showpageindex() {
+            let start;
+            if (page_max > page_avaliable) {
+                start = now - parseInt(page_avaliable / 2) > 0 ? now - parseInt(page_avaliable / 2) : 1;
+                if (start + page_avaliable > page_max) {
+                    start = page_max + 1 - page_avaliable;
+                }
+            } else {
+                start = 1;
+            }
+            $('ul.pagination li').each(function (value) {
+                if (value === 0 || value === page_max + 1 || value >= start && value < start + page_avaliable) {
+                    $('ul.pagination li').eq(value).show();
+                } else {
+                    $('ul.pagination li').eq(value).hide();
+                }
+            })
+        }
+
+        function prevpage() {
+            if (now > 1) {
+                pre_now = now;
+                now--;
+                showpage(now);
+                showpageindex();
+                checkpage()
+                changeActive();
+            }
+        }
+
+        function nextpage() {
+            if (now < page_max) {
+                pre_now = now;
+                now++;
+                showpage(now);
+                showpageindex();
+                checkpage();
+                changeActive();
+            }
+        }
+
+        function checkpage() {
+            if (now === 1 && now !== page_max) {
+                $('#preva').addClass('disabled');
+                $('#nexta').removeClass('disabled');
+            } else if (now === page_max && now !== 1) {
+                $('#nexta').addClass('disabled');
+                $('#preva').removeClass('disabled');
+            } else if (now === page_max && now === 1) {
+                $('#nexta').addClass('disabled');
+                $('#preva').addClass('disabled');
+            } else {
+                $('#preva').removeClass('disabled');
+                $('#nexta').removeClass('disabled');
+            }
+        }
+
+        //删除现有的用户列表
+        function clearJobList() {
+            $('#job_table tr:gt(0)').remove();
+        }
+        //根据参数添加用户列表
+        function showJobList(list) {
+            list = JSON.parse(list);
+            for (let i = 0; i < list.length; i++) {
+                let date = list[i].deadline.substr(0, 10);
+                date = new Date(date);
+                date.setDate(date.getDate() + 1);
+                date = `${date.getFullYear()}-${(date.getMonth() + 1) > 9 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)}-${date.getDate() + 1 > 9 ? date.getDate() : '0' + date.getDate()}`;
+                $('#job_table').append(`<tr><td class="text-center"><label><input type="checkbox" name="amount" onclick="checkSelectAll()"></label></td><td class="text-center">${list[i].jid}</td><td class="text-center">${list[i].company}</td><td class="text-center">${list[i].title}</td><td class="text-center">${list[i].position}</td><td class="text-center">${list[i].nature}</td><td class="text-center">${date}</td><td class="text-center">${list[i].tags ? list[i].tags : ''}</td><td class="text-center"><button onclick='edit(${JSON.stringify(list[i])})' class="btn btn-xs btn-info"><i class="fa fa-edit"></i>  编辑</button><button onclick='del(${JSON.stringify(list[i])})' class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>  删除</button></td></tr>`);
+            }
+        }
+
+        let isCheckAll = false;
+        let selectedBox;
+        let deleteList = [];
+        let nameList = [];
+        function swapCheck() {
+            if (isCheckAll) {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                isCheckAll = false;
+                selectedBox = 0;
+            } else {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = true;
+                });
+                isCheckAll = true;
+                selectedBox = length;
+            }
+            checkDisable();
+        }
+
+        function jumppage() {
+            let page = $('#pagenumber').val();
+            if (page && page >= 1 && page <= page_max) {
+                gopage(page);
+                $('#pageerror').removeClass('has-error');
+            } else {
+                $('#pageerror').addClass('has-error');
+            }
+        }
+
+        function checkSelectAll() {
+            selectedBox = 0;
+            $('#job_table :input[name=amount]:gt(0)').each(function (cnt) {
+                if (this.checked) {
+                    selectedBox++;
+                }
+            });
+            if (selectedBox === length) {
+                $('.selectAll').click();
+            } else {
+                $('.selectAll').prop('checked', false);
+                isCheckAll = false;
+            }
+            checkDisable();
+        }
+
+        function checkDisable() {
+            if (selectedBox > 0) {
+                $('.deletebutton').prop('disabled', false);
+            } else {
+                $('.deletebutton').prop('disabled', true);
+            }
+        }
+
+
+        function del(job) {
+            swal({
+                title: `确定删除工作"${job.title}"吗?`,
+                //text: str,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true
+            }).then(function (result) {
+                if (result) {
+                    $.post('/back_end/deleteJob', {job: JSON.stringify(job)}, function (result) {
+                        if (result === 'ok') {
+                            swal("删除成功!", {
+                                icon: "success"
+                            });
+                            $('#job_table tr:gt(0)').each(function (value) {
+                                console.log($(this).children().eq(1).text(), job.jid);
+                                if ($(this).children().eq(1).text() == job.jid) {
+                                    console.log('delete' + job.jid);
+                                    $(this).remove();
+                                }
+                            });
+                            length--;
+                            page_max = Math.ceil(length / page_number);
+                            showpage(now);
+                            deletePageIndex();
+                            updatePageIndex();
+                            showpageindex();
+                            checkpage();
+                            changeActive();
+                        } else {
+                            swal("出现了神奇的错误!");
+                        }
+                    });
+                }
+            });
+        }
+
+        function delSelected() {
+            deleteList = [];
+            nameList = [];
+            $('#job_table tr:gt(0)').each(function (cnt) {
+                if ($(this).children().eq(0).children().children().prop('checked')) {
+                    deleteList.push($(this).children().eq(1).text());
+                    nameList.push($(this).children().eq(3).text());
+                }
+            });
+            let str = nameList.join(',\n ');
+            swal({
+                title: `确定删除这些工作吗?`,
+                text: str,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true
+            }).then(function (result) {
+                if (result) {
+                    $.post('/back_end/deleteSeletedJob', {dlist: JSON.stringify(deleteList)}, function (result) {
+                        if (result === 'ok') {
+                            swal("删除成功!", {
+                                icon: "success"
+                            });
+                            $('#job_table tr:gt(0)').each(function (value) {
+                                if (deleteList.includes($(this).children().eq(1).text())) {
+                                    $(this).remove();
+                                }
+                            });
+                            length -= deleteList.length;
+                            page_max = Math.ceil(length / page_number);
+                            showpage(now);
+                            deletePageIndex();
+                            updatePageIndex();
+                            changeActive();
+                        } else {
+                            swal("出现了神奇的错误!");
+                        }
+                    });
+                }
+            });
+        }
+
+        function edit(jid) {
+
+        }
+
+        function searchJob() {
+            let company = $('.company').val();
+            let title = $('.title').val();
+            let leixin = $('#lxSelect').val();
+            let deadline = $('.expiryTime').val();
+            let xingzhi = $('#xzSelect').val();
+
+            let sqlstr = '';
+            if (company) {
+                sqlstr += `company like '%${company}%'`;
+            }
+            if (title) {
+                if (sqlstr.length > 0) {
+                    sqlstr += ` and title like '%${title}%'`;
+                } else {
+                    sqlstr += `title like '%${title}%'`;
+                }
+            }
+            if (leixin) {
+                if (sqlstr.length > 0) {
+                    sqlstr += ` and position = '${lxlist[leixin]}'`;
+                } else {
+                    sqlstr += `position = '${lxlist[leixin]}'`;
+                }
+            }
+            if (deadline) {
+                deadline = deadline.split('/').join('-');
+                if (sqlstr.length > 0) {
+                    sqlstr += ` and deadline <= '${deadline}'`;
+                } else {
+                    sqlstr += `deadline <= '${deadline}'`;
+                }
+            }
+            if (xingzhi) {
+                if (sqlstr.length > 0) {
+                    sqlstr += ` and nature = '${xzlist[xingzhi]}'`;
+                } else {
+                    sqlstr += `nature = '${xzlist[xingzhi]}'`;
+                }
+            }
+            if (sqlstr.length > 0) {
+                sqlstr = 'select * from jobs where (' + sqlstr + ')';
+            } else {
+                sqlstr = 'select * from jobs';
+            }
+            $.post('/back_end/searchJob', {sqlstr}, function (result) {
+                if (result) {
+                    clearJobList();
+                    showJobList(result);
+                    length = JSON.parse(result).length;
+                    page_max=Math.ceil(length/page_number);
+                    showpage(now);
+                    deletePageIndex();
+                    updatePageIndex();
+                    showpageindex();
+                    checkpage();
+                    changeActive();
+                } else {
+                    swal('出现了神奇的错误!');
+                }
+            })
+        }
+
+        function clearSearch(){
+            $('.company').val('');
+            $('.title').val('');
+            $('#lxSelect option[value=""]').prop('selected',true);
+            $('#select2-lxSelect-container').text('全部');
+            $('#xzSelect option[value=""]').prop('selected',true);
+            $('#select2-xzSelect-container').text('全部');
+            $('.publishTime').val('');
+            $('.expiryTime').val('');
+        }
 
 
         // 这是那个bootstrap-datepicker的出问题的注释
@@ -60,12 +403,12 @@ block content
                         .form-group
                             label.col-md-4.control-label 在招公司
                             .col-md-8
-                                input.form-control()
+                                input.company.form-control()
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4 职位名称
                             .col-md-8
-                                input.form-control()
+                                input.title.form-control()
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4 工作类型
@@ -87,13 +430,13 @@ block content
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4 发布时间
-                            .col-md-8.publishtime
-                                input.publishTime.form-control(type='text' placeholder='选择发布时间' readonly onclick="checkDisplay(this)")
+                            .col-md-8
+                                input.publishTime.form-control(type='text' placeholder='选择发布时间' readonly)
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4 截止时间
-                            .col-md-8.expirytime
-                                input.expiryTime.form-control(type='text' placeholder='选择截止时间' readonly onclick="checkDisplay()")
+                            .col-md-8
+                                input.expiryTime.form-control(type='text' placeholder='选择截止时间' readonly)
                     .col-md-4
                         .form-group
                             label.control-label.col-md-4.word-spacing-25 工作性质
@@ -106,18 +449,21 @@ block content
                                         option(value='2') 兼职
                                         option(value='3') 合同
                         .pull-right
-                            button.btn.btn-primary(onclick='searchUser()') 搜索
+                            button.btn(type='button' onclick='clearSearch()') 清除
+                            button.btn.btn-primary(type='button' onclick='searchJob()' style="margin-left:10px") 搜索
 
     .panel.panel-default
         .panel-heading
             strong() 职位列表
-            button.btn.btn-xs.btn-primary.pull-right()
-                i.fa.fa-plus
-                | 新增
+            button.deletebutton.btn.btn-sm.btn-danger.pull-right(onclick="delSelected()", disabled)
+                i.fa.fa-remove
+                | 删除
         .panel-body.table-responsive
-            table.table.table-striped.add-table-border
+            table#job_table.table.table-striped.add-table-border
                 thead
                     tr
+                        th.text-center
+                            input.selectAll(name="amount", type="checkbox", onclick="swapCheck()")
                         th.text-center 招聘序号
                         th.text-center 在招公司
                         th.text-center 职位名称
@@ -129,6 +475,9 @@ block content
                 tbody
                     for item in job_list
                         tr
+                            td.text-center
+                                label
+                                    input(name="amount", type="checkbox", onclick='checkSelectAll()')
                             td.text-center #{item.jid}
                             td.text-center #{item.company}
                             td.text-center #{item.title}
@@ -137,9 +486,19 @@ block content
                             td.text-center #{item.deadline}
                             td.text-center #{item.tags}
                             td.text-center
-                                button.btn.btn-xs.btn-info()
+                                button.btn.btn-xs.btn-info(onclick="edit(#{JSON.stringify(item)})")
                                     i.fa.fa-edit
                                     |  编辑
-                                button.btn.btn-xs.btn-danger()
+                                button.btn.btn-xs.btn-danger(onclick="del(#{JSON.stringify(item)})")
                                     i.fa.fa-remove
-                                    | 删除
+                                    |  删除
+            .pag.row
+                .col-md-10
+                    ul.pagination
+                        li#preva
+                            a(href='javascript:prevpage()') «
+                .text-right.col-md-2(style='margin-top:23px')
+                    #pageerror.col-md-6
+                        input#pagenumber.form-control(type='text')
+                    .col-md-6
+                        button.btn.btn-primary(onclick='jumppage()') 跳转

@@ -97,18 +97,89 @@ router.post('/deleteSeletedUser', function (req, res) {
     let list = JSON.parse(req.body.dlist);
     (async () => {
         let result = await User.destroy({
-            where:{
-                eid:{
-                    $in:list
+            where: {
+                eid: {
+                    $in: list
                 }
             }
         });
         console.log(result);
-        if(result) {
+        if (result) {
+            res.end('ok');
+        } else {
+            res.end('error');
+        }
+    })();
+});
+
+router.post('/deleteJob', function (req, res) {
+    let job = JSON.parse(req.body.job);
+    let jid = job.jid;
+    (async () => {
+        let result = await Job.destroy({
+            where:{
+                jid:jid
+            }
+        });
+        if(result){
             res.end('ok');
         }else{
             res.end('error');
         }
+    })();
+});
+
+router.post('/deleteSeletedJob', function (req, res) {
+    let list = JSON.parse(req.body.dlist);
+    (async () => {
+        let result = await Job.destroy({
+            where: {
+                jid: {
+                    $in: list
+                }
+            }
+        });
+        console.log(result);
+        if (result) {
+            res.end('ok');
+        } else {
+            res.end('error');
+        }
+    })();
+});
+
+router.post('/searchJob',function (req, res) {
+    let str = req.body.sqlstr;
+    console.log(str);
+    (async () => {
+        let connection = mysql.createConnection({
+            host: 'rm-uf666l9f181m30sa1o.mysql.rds.aliyuncs.com',
+            user: 'www',
+            password: 'www',
+            database: 'test',
+            port: '3306'
+        });
+
+        connection.connect(function (err) {
+            if (err) {
+                console.log('error connecting:' + err.stack);
+                return;
+            }
+            console.log('connected as id ' + connection.threadId);
+        });
+
+        //2.查询
+        connection.query(str, function (err, rows, fields) {
+            if (err) throw err;
+            console.log('selected！');
+            // rows=rows.map((val,index,arr)=>{
+            //     return val.jid;
+            // });
+            res.end(JSON.stringify(rows));
+        });
+
+        //3.关闭数据库
+        connection.end();
     })();
 });
 

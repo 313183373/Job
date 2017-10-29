@@ -38,7 +38,7 @@ let Job = sequelize.define('job', {
     rawdesc: Sequelize.TEXT,
     rawprop: Sequelize.TEXT,
     proposal:Sequelize.TEXT,
-    deadline:Sequelize.STRING(255),
+    deadline:Sequelize.DATEONLY,
     position:Sequelize.STRING(255),
     nature:Sequelize.STRING(255),
     tags:Sequelize.STRING(255),

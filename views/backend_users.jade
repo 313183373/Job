@@ -126,7 +126,11 @@ block content
                     clearUserList();
                     showUserList(result);
                     now = 1;
+                    length=JSON.parse(result).length;
+                    page_max = Math.ceil(length / page_number);
                     showpage(now);
+                    deletePageIndex();
+                    updatePageIndex();
                     showpageindex();
                     checkpage();
                     changeActive();
@@ -141,7 +145,6 @@ block content
         //根据参数添加用户列表
         function showUserList(list) {
             list = JSON.parse(list);
-            console.log(list);
             for (let i = 0; i < list.length; i++) {
                 $('#user_table').append(`<tr><td><label><input type="checkbox" name="amount"></label></td><td>${list[i].eid}</td><td>${list[i].password}</td><td>${list[i].cname === null ? '' : list[i].cname}</td><td>${list[i].cadd === null ? '' : list[i].cadd}</td><td>${list[i].cpro === null ? '' : list[i].cpro}</td><td><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-ban"></i>  删除</button><button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>  编辑</button><button onclick=del(${JSON.stringify(list[i])}) class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>  删除</button></td></tr>`);
             }
@@ -174,8 +177,11 @@ block content
                             showpage(now);
                             deletePageIndex();
                             updatePageIndex();
+                            changeActive();
                         } else {
-                            swal("出现了神奇的错误!");
+                            swal("出现了神奇的错误!",{
+                                dangerMode:true
+                            });
                         }
                     });
                 }
@@ -259,7 +265,6 @@ block content
                                 icon: "success"
                             });
                             $('#user_table tr:gt(0)').each(function (value) {
-                                console.log($(this).text());
                                 if (deleteList.includes($(this).children().eq(1).text())) {
                                     $(this).remove();
                                 }
@@ -268,7 +273,8 @@ block content
                             page_max = Math.ceil(length / page_number);
                             showpage(now);
                             deletePageIndex();
-                            updatePageIndex()
+                            updatePageIndex();
+                            changeActive();
                         } else {
                             swal("出现了神奇的错误!");
                         }
