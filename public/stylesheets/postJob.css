@@ -60,7 +60,7 @@ small{
 .postAll.container{
     margin-left: 100px;
     width: 40%;
-    float:left;
+    /*float:left;*/
     border-right: 1px dashed gray;
 }
 aside{

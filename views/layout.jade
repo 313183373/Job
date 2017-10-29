@@ -1,87 +1,87 @@
 doctype html
 html
-  head
-    meta(charset='utf-8')
-    script(src='https://code.jquery.com/jquery-3.2.1.js' , integrity='sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=', crossorigin='anonymous')
-    link(rel='stylesheet', href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
-    link(rel='stylesheet', href='/stylesheets/index.css')
-    script(src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js' , integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
-    script(type='text/javascript').
-      $(function() {
-          if (sessionStorage.login&&sessionStorage.login!=='undefined') {
-              if(sessionStorage.useremail==='admin'){
-                  $('.back_end').show();
-              }else{
-                  $('.back_end').hide();
-              }
-              $('.login_button').hide();
-              $('.personal_button').show();
-              $('.logout_button').show();
-              $('.postjob_button').prop('href','/post_job');
-          } else {
-              $('.login_button').show();
-              $('.personal_button').hide();
-              $('.postjob_button').prop('href','/signin');
-              $('.logout_button').hide();
-          }
-      })
+    head
+        meta(charset='utf-8')
+        script(src='https://code.jquery.com/jquery-3.2.1.js' , integrity='sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=', crossorigin='anonymous')
+        link(rel='stylesheet', href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+        link(rel='stylesheet', href='/stylesheets/index.css')
+        script(src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js' , integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+        script(type='text/javascript').
+            $(function () {
+                if (sessionStorage.login && sessionStorage.login !== 'undefined') {
+                    if (sessionStorage.useremail === 'admin') {
+                        $('.back_end').show();
+                    } else {
+                        $('.back_end').hide();
+                    }
+                    $('.login_button').hide();
+                    $('.personal_button').show();
+                    $('.logout_button').show();
+                    $('.postjob_button').prop('href', '/post_job');
+                } else {
+                    $('.login_button').show();
+                    $('.personal_button').hide();
+                    $('.postjob_button').prop('href', '/signin');
+                    $('.logout_button').hide();
+                }
+            })
 
-      function logout() {
-          sessionStorage.login=undefined;
-          sessionStorage.useremail=undefined;
-          location.href='/';
-      }
+            function logout() {
+                sessionStorage.login = undefined;
+                sessionStorage.useremail = undefined;
+                location.href = '/';
+            }
 
-      function query() {
-          let content=$('#navbar-search').val();
-          $.post('/queryjob',{content},function (result) {
-              if(result!=='error'){
-                  let info=result;
-                  //let info=new Buffer(result).toString('base64');
-                  window.location.href='/?info='+info;
-              }else{
-                  alert('发生了神奇的错误!');
-              }
-          });
-      }
+            function query() {
+                let content = $('#navbar-search').val();
+                $.post('/queryjob', {content}, function (result) {
+                    if (result !== 'error') {
+                        let info = result;
+                        //let info=new Buffer(result).toString('base64');
+                        window.location.href = '/?info=' + info;
+                    } else {
+                        alert('发生了神奇的错误!');
+                    }
+                });
+            }
 
-    title CODING GIRLS CLUB
-  body
-    nav.navbar.navbar-default
-      .container
-          .container-fluid
-            .navbar-header
-              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
-                  span.sr-only Toggle navigation
-                  span.icon-bar
-                  span.icon-bar
-                  span.icon-bar
-              a.navbar-brand(href='/')
-                img(alt='Brand' src='img/CGC02-c4bbb83e7831724c5d32623da38bd5c070155728b087e8985ef7cd1e1f394344.png')
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-              ul.nav.navbar-nav
-                li.active(style='margin-right: 5px;')
-                  a(href='/') 所有职位
-              form.navbar-form.navbar-left
-                .form-group
-                  input#navbar-search.form-control(type='text', placeholder='请输入您希望查询的关键词')
-                span(style='width: 5px;display: inline-block;')
-                button.btn.btn-default(type='button',onclick='query()') 查询
-              ul.nav.navbar-nav.navbar-right
-                li
-                  a.back_end(href='/back_end', style='display:none') 后台
-                li
-                  a.login_button(href='/signin', style='display:none') 登录 / 注册
-                li
-                  a.postjob_button(href='/post_job') 发布职位
-                li
-                  a.personal_button(href='/personal_info', style='display:none') 个人信息
-                li
-                  a.logout_button(onclick='logout()', style='display:none') 登出
-  block content
+        title CODING GIRLS CLUB
+    body
+        nav.navbar.navbar-default
+            .container
+                .container-fluid
+                    .navbar-header
+                        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+                            span.sr-only Toggle navigation
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href='/')
+                            img(alt='Brand' src='img/CGC02-c4bbb83e7831724c5d32623da38bd5c070155728b087e8985ef7cd1e1f394344.png')
+                    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                        ul.nav.navbar-nav
+                            li.active(style='margin-right: 5px;')
+                                a(href='/') 所有职位
+                        form.navbar-form.navbar-left
+                            .form-group
+                                input#navbar-search.form-control(type='text', placeholder='请输入您希望查询的关键词')
+                            span(style='width: 5px;display: inline-block;')
+                            button.btn.btn-default(type='button',onclick='query()') 查询
+                        ul.nav.navbar-nav.navbar-right
+                            li
+                                a.back_end(href='/back_end', style='display:none') 后台
+                            li
+                                a.login_button(href='/signin', style='display:none') 登录 / 注册
+                            li
+                                a.postjob_button(href='/post_job') 发布职位
+                            li
+                                a.personal_button(href='/personal_info', style='display:none') 个人信息
+                            li
+                                a.logout_button(onclick='logout()', style='display:none') 登出
+    block content
 
-      div#empty(style="height:100px;")
-  footer(style="height:100px;")
-    div.footer#footer
-      | 版权所有 © ThoughtWorks第一期线上训练营搞事小分队 2017。 保留一切权利。
+        div#empty(style="height:100px;")
+    footer(style="height:100px;")
+        div.footer#footer
+            | 版权所有 © ThoughtWorks第一期线上训练营搞事小分队 2017。 保留一切权利。
 
